@@ -1,0 +1,179 @@
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  height:100vh;
+}
+.main{
+  width:100%;
+  height:100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.page{
+  width:85%;
+  height:100vh;
+  padding:0px 10px;
+  background-color: #fff;
+}
+
+.header{
+  width:100%;
+  height:70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid #0d2c31;
+}
+.headerTitle p{
+  font-size: 21px;
+  color: #33475b;
+  font-weight: bold;
+}
+.cashMain{
+  width:100%;
+  height:calc(100vh - 70px);
+  padding:30px 0px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+.toggleSection{
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toggleContainer button{
+  min-width:120px;
+  padding:15px;
+  border:0px;
+  outline:none;
+  cursor: pointer;
+}
+.formButton{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.listButton{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.toggleActive{
+  background-color: #0d2c31;
+  color:#fff
+}
+.dataContainer{
+  padding:20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px #33475b;
+}
+.dataDiv{
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cashInput{
+  width:280px;
+  margin: 10px;
+  
+}
+.cashInput label{
+  width:100%;
+  
+}
+.cashInput input {
+  width: 100%;
+  margin-top: 10px;
+  height: 32px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #33475b;
+  transition: box-shadow 0.3s ease; /* Add a transition for a smoother effect */
+}
+.cashInput select{
+  width: 100%;
+  margin-top: 10px;
+  height: 32px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #33475b;
+  transition: box-shadow 0.3s ease;
+  outline: none; 
+}
+.cashInput input:focus {
+  box-shadow: 0 0 5px #19363C; /* Red box-shadow when in focus */
+  border-color: #19363C; /* Optional: Set border color to original color */
+  outline: none; /* Optional: remove default focus outline */
+}
+.cashInput select:focus {
+  box-shadow: 0 0 5px #19363C; /* Red box-shadow when in focus */
+  border-color: #19363C; /* Optional: Set border color to original color */
+  outline: none; /* Optional: remove default focus outline */
+}
+
+.buttonSection{
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+
+
+}
+.buttonSection button{
+  width:130px;
+  padding:8px 10px;
+  border-radius: 5px;
+  margin:0px 10px;
+  cursor: pointer;
+  
+}
+.addButton{
+  background-color: #19363C;
+  color: #fff;
+  border: none;
+}
+.resetButton{
+  background-color: #fff;
+  border: 1px solid #19363C;
+  color: #19363C;
+}
+.partyContainer {
+  margin: 20px;
+}
+
+h2 {
+  color: #333; /* Set your preferred font color for the heading */
+}
+
+table {
+  width: 800px;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd; /* Add a border between rows */
+}
+
+thead {
+  background: red;
+  color: white;
+}
+
+/* Optional: Add some styling to alternate rows for better readability */
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
