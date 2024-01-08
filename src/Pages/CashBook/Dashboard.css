@@ -1,0 +1,12 @@
+.dashLeft{
+    width:60%;
+    padding:0px 10px;
+}
+.dashRight{
+    width:40%;
+    padding:0px 10px;
+}
+.dashCash{
+    width:100%;
+    margin-bottom: 30px;
+}

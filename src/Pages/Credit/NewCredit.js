@@ -6,7 +6,12 @@ const NewCredit = () => {
       <div className="dataDiv">
         <div className="cashInput">
           <label>Party</label>
-          <input />
+          <select>
+            <option>Party 1</option>
+            <option>Party 2</option>
+            <option>Party 3</option>
+            <option>Party 4</option>
+          </select>
         </div>
         <div className="cashInput">
           <label>Opening Balance</label>

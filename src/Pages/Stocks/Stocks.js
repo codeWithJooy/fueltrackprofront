@@ -38,7 +38,10 @@ const Stocks = () => {
             <div className="dataDiv">
               <div className="cashInput">
                 <label>Stock</label>
-                <input />
+                <select>
+                  <option>MS</option>
+                  <option>HSD</option>
+                </select>
               </div>
               <div className="cashInput">
                 <label>Opening Stock</label>

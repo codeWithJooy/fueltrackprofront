@@ -8,7 +8,7 @@ const Sidebar=({page})=>{
         <div className='sidebarTitle'>
             <p>FuelTrack Pro</p>
         </div>
-        <SidebarUnit title="Dashboard" page={page}/>
+        <SidebarUnit title="CashBook" page={page}/>
         <SidebarUnit title="Cash" page={page} />
         <SidebarUnit title="Sales" page={page} />
         <SidebarUnit title="Stocks"page={page} />

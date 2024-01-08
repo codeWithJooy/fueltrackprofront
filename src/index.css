@@ -161,7 +161,11 @@ table {
   border-collapse: collapse;
   margin-top: 10px;
 }
-
+.dashCashTable{
+  width: 100%!important;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
 th, td {
   padding: 10px;
   text-align: left;

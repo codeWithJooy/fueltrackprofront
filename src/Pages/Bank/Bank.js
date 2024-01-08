@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Header from "../../Components/Header/Header";
+import BankForm from "./BankForm";
+import BankList from "./BankList";
 
 const Bank = () => {
   const [currentDate, setCurrentDate] = useState("");
@@ -46,37 +48,14 @@ const Bank = () => {
               </button>
             </div>
           </div>
-          <div className="dataContainer">
-            <div className="dataDiv">
-              <div className="cashInput">
-                <label>Type</label>
-                <select>
-                  <option>Gpay</option>
-                  <option>PhonePe</option>
-                  <option>PayTm</option>
-                  <option>Card</option>
-                </select>
-              </div>
-              <div className="cashInput">
-                <label>Date</label>
-                <input
-                  type="date"
-                  value={currentDate}
-                  onChange={handleDateChange}
-                />
-              </div>
-            </div>
-            <div className="dataDiv">
-              <div className="cashInput">
-                <label>Amount</label>
-                <input />
-              </div>
-            </div>
-            <div className="buttonSection">
-              <button className="addButton">Add</button>
-              <button className="resetButton">Reset</button>
-            </div>
-          </div>
+          {
+            toggle=="add" && 
+            <BankForm />
+          }
+          {
+           toggle=="party" && 
+           <BankList />
+          }
         </div>
       </div>
     </div>
