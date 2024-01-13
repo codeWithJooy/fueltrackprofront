@@ -6,6 +6,7 @@ import Stocks from './Pages/Stocks/Stocks';
 import Credit from './Pages/Credit/Credit';
 import Bank from './Pages/Bank/Bank';
 import Sales from './Pages/Sales/Sales';
+import Login from './Pages/Signup/Login';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
          <Route path="/credit" component={Credit} />
          <Route path="/bank" component={Bank} />
          <Route path="/sales" component={Sales} />
+         <Route path="/login" component={Login} />
        </Switch>
      </BrowserRouter>
   );

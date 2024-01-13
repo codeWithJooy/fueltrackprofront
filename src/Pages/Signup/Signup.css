@@ -1,0 +1,63 @@
+.signMain{
+    width:100%;
+    height:100vh;
+}
+.signContainer{
+    width:100%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signCard{
+    width:800px;
+    height:500px;
+    box-shadow: 0 0 5px lightgray;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signImage{
+    width:50%;
+    height: 100%;
+}
+.signImage img{
+   width: 100%;
+   height:100%;
+   border-radius: 5px;
+}
+.signDetails{
+    width:50%;
+    padding: 10px 45px;
+}
+.signDetailsContainer{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+.detailHeader{
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+.detailHeader p{
+    font-size: 18px;
+    font-weight: bold;
+    margin:10px 0px;
+}
+.detailInput{
+    width:100%;
+}
+.detailInput input{
+    margin:10px 0px;
+    height:40px;
+   width:100%;
+   padding:5px 10px;
+   border-radius: 10px;
+   outline: none;
+   border:1px solid #33475b;
+}

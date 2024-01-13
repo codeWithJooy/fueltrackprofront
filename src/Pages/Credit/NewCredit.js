@@ -5,36 +5,39 @@ const NewCredit = () => {
     <div className="dataContainer">
       <div className="dataDiv">
         <div className="cashInput">
-          <label>Party</label>
+          <label>Party Name</label>
           <select>
-            <option>Party 1</option>
-            <option>Party 2</option>
+            <option>Hemant</option>
+            <option>Abhi</option>
             <option>Party 3</option>
             <option>Party 4</option>
           </select>
         </div>
         <div className="cashInput">
-          <label>Opening Balance</label>
+          <label>Vehicle Number</label>
           <input />
         </div>
       </div>
       <div className="dataDiv">
         <div className="cashInput">
-          <label>New Credit</label>
-          <input />
+          <label>Product</label>
+          <select>
+            <option>HSD</option>
+            <option>MS</option>
+          </select>
         </div>
         <div className="cashInput">
-          <label>Received</label>
+          <label>Quantity</label>
           <input />
         </div>
       </div>
       <div className="dataDiv">
         <div className="cashInput">
-          <label>Details</label>
+          <label>Amount</label>
           <input />
         </div>
         <div className="cashInput">
-          <label>Closing Balance</label>
+          <label>Round Off</label>
           <input />
         </div>
       </div>

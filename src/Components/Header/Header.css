@@ -1,0 +1,52 @@
+.header{
+    width:100%;
+    height:70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #0d2c31;
+    position: relative;
+  }
+  .headerTitle p{
+    font-size: 21px;
+    color: #33475b;
+    font-weight: bold;
+  }
+  .headerDetails{
+    position: absolute;
+    right:10px;
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .headerDate{
+    margin:0px 20px;
+    font-size: 17px;
+    font-weight: bold;
+  }
+  .headerPrice{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .priceTrend{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 10px;
+  }
+  .currentPrice{
+    font-size: 15px;
+    width: 90px;
+    font-weight: 500;
+  }
+  .priceTrend img{
+    width: 13px;
+    height:13px;
+    margin-right: 5px;
+  }
+  .priceTrend p{
+    font-size: 13px;
+  }
+  
