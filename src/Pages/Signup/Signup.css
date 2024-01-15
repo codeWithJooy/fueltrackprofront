@@ -39,10 +39,22 @@
     align-items: flex-start;
     justify-content: center;
 }
+.detailTitle{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.detailTitle p{
+    font-size: 18px;
+    font-weight: bold;
+}
 .detailHeader{
     width:100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 }
 .detailHeader p{
     font-size: 18px;
@@ -52,6 +64,11 @@
 .detailInput{
     width:100%;
 }
+.detailInput label{
+    font-size: 14px;
+    font-weight: bold;
+    color: #0d2c31;
+}
 .detailInput input{
     margin:10px 0px;
     height:40px;
@@ -60,4 +77,34 @@
    border-radius: 10px;
    outline: none;
    border:1px solid #33475b;
+}
+.detailButton{
+    width:100%;
+    margin-top: 10px;
+}
+.detailButton button{
+    width:100%;
+    padding:12px 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color:#0d2c31;
+    color:#fff;
+    font-weight: bold;
+}
+.already{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.already p,span{
+    font-size: 12px;
+}
+.already span{
+    color: #0d2c31;
+    margin-left: 10px;
+    font-weight: bold;
+    cursor: pointer;
 }

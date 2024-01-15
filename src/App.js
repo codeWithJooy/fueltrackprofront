@@ -7,7 +7,8 @@ import Credit from './Pages/Credit/Credit';
 import Bank from './Pages/Bank/Bank';
 import Sales from './Pages/Sales/Sales';
 import Login from './Pages/Signup/Login';
-
+import Signup from './Pages/Signup/Signup';
+import PumpSetup from './Pages/Headquarters/Pumpsetup';
 function App() {
   return (
      <BrowserRouter>
@@ -19,6 +20,8 @@ function App() {
          <Route path="/bank" component={Bank} />
          <Route path="/sales" component={Sales} />
          <Route path="/login" component={Login} />
+         <Route path="/signup" component={Signup} />
+         <Route path="/pumpsetup" component={PumpSetup} />
        </Switch>
      </BrowserRouter>
   );

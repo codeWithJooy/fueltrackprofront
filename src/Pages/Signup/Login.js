@@ -1,7 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "./Signup.css";
 
 const Login = () => {
+  const history = useHistory();
+  const handleSignup=()=>{
+    history.push("/signup")
+  }
   return (
     <div className="signMain">
       <div className="signContainer">
@@ -11,26 +16,29 @@ const Login = () => {
           </div>
           <div className="signDetails">
             <div className="signDetailsContainer">
+              <div className="detailTitle">
+                <p>Welcome To FuelTrack Pro</p>
+              </div>
               <div className="detailHeader">
                 <p>Login</p>
               </div>
               <div className="detailInput">
-                <label>First Name</label>
+                <label>Email</label>
                 <input type="text" />
               </div>
               <div className="detailInput">
-                <label>First Name</label>
+                <label>Password</label>
                 <input type="text" />
               </div>
-              <div className="detailInput">
-                <label>First Name</label>
-                <input type="text" />
+              <div className="detailButton">
+                <button>Log In</button>
+                <div className="already">
+                  <p>
+                    Already Have an Account ?<span onClick={handleSignup}>Sign Up</span>
+                  </p>
+                </div>
               </div>
-              <div className="detailInput">
-                <label>First Name</label>
-                <input type="text" />
-              </div>
-              <div className="detailHeader"></div>    </div>
+            </div>
           </div>
         </div>
       </div>
