@@ -8,7 +8,7 @@ const devApis = {
 const prodApis = {
   USER_API: "https://fueltrackpro.onrender.com/api/auth",
   SETUP_API:"http://fueltrackpro.onrender.com/api/setup",
-  
+  PUMP_API:"http://fueltrackpro.onrender/api/pump",
 };
 
 const getApiUrls = () => {
@@ -32,8 +32,8 @@ export const userApi = axios.create({
 export const setupApi = axios.create({
   baseURL: APIS.SETUP_API,
 });
-export const floorApi = axios.create({
-  baseURL: APIS.FLOOR_API,
+export const pumpApi = axios.create({
+  baseURL: APIS.PUMP_API,
 });
 export const roomApi = axios.create({
   baseURL: APIS.ROOM_API,

@@ -3,11 +3,12 @@
     height:100%;
     margin-top: 30px;
     display: flex;
+    flex-wrap: wrap;
     align-items: start;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 .pumpCard{
-    width:25%;
+    width:22%;
     padding:10px;
     border:1px solid #0d2c31;
     border-radius: 10px;

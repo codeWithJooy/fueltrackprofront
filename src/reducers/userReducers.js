@@ -1,4 +1,4 @@
-import { USER_SIGNUP } from "../actionTypes/userTypes";
+import { USER_SIGNUP,USER_LOGIN } from "../actionTypes/userTypes";
 
 const initialize={
     ownerId:"",
@@ -15,6 +15,11 @@ const userReducer=(state=initialize,action)=>{
                 ownerId:payload.ownerId,
                 email:payload.email
             }
+            case USER_LOGIN:
+                return{
+                    ownerId:payload.ownerId,
+                    email:payload.email
+                }
         default:
             return state;    
     }
