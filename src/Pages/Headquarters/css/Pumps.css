@@ -1,0 +1,45 @@
+.pumpContainer{
+    width: 100%;
+    height:100%;
+    margin-top: 30px;
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+}
+.pumpCard{
+    width:25%;
+    padding:10px;
+    border:1px solid #0d2c31;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+.pumpImg{
+    width:30%;
+    padding:5px;
+}
+.pumpImg img{
+    width:100%;
+    height:100%;
+}
+.pumpDetails{
+    width:70%;
+}
+.pumpName{
+    width:100%;
+    margin-bottom: 5px;
+}
+.pumpName p{
+    font-size: 16px;
+    font-weight: bold;
+}
+.pumpPlot{
+    width:100%;
+}
+.pumpPlot p{
+    font-size: 14px;
+    font-weight: 300px;
+    color: gray;
+}

@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { userSignup } from "../../actions/userActions";
+
 import "./Signup.css";
 
 const Signup = () => {
+  const [user,setUser]=useState({
+    firstName:"",
+    lastName:"",
+    email:"",
+    password:"",
+  });
   const history = useHistory();
+  const handleChange=(e)=>{
+    setUser({...user,[e.target.name]:e.target.value})
+  }
+  const handleSignup=()=>{
+    (async()=>{
+       if(await userSignup(user))(
+         history.push("/pumpsetup")
+       )
+    })()
+  }
   const handleLogin = () => {
     history.push("/login")
   };
@@ -23,23 +41,46 @@ const Signup = () => {
                 <p>Sign Up</p>
               </div>
               <div className="detailInput">
-                <label>Full Name</label>
-                <input type="text" />
+                <label>First Name</label>
+                <input type="text" 
+                 name="firstName"
+                 placeholder="First Name"
+                 value={user.firstName}
+                 onChange={handleChange}
+                />
               </div>
               <div className="detailInput">
-                <label>Email</label>
-                <input type="text" />
+                <label>Last Name</label>
+                <input 
+                 type="text" 
+                 name="lastName"
+                 placeholder="Last Name"
+                 value={user.lastName}
+                 onChange={handleChange}
+                />
+              </div>
+              <div className="detailInput">
+                <label>EMail</label>
+                <input 
+                  type="text" 
+                  name="email"
+                  value={user.email}
+                  placeholder="Email"
+                  onChange={handleChange}
+                />
               </div>
               <div className="detailInput">
                 <label>Password</label>
-                <input type="text" />
-              </div>
-              <div className="detailInput">
-                <label>Confirm Password</label>
-                <input type="text" />
+                <input 
+                 type="password" 
+                 name="password"
+                 value={user.password}
+                 placeholder="Password"
+                 onChange={handleChange}
+                />
               </div>
               <div className="detailButton">
-                <button>Sign Up</button>
+                <button onClick={handleSignup}>Sign Up</button>
                 <div className="already">
                   <p>
                     Already Have an Account ?<span onClick={handleLogin}>Log In</span>

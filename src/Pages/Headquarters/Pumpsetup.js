@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import "./Pumpsetup.css";
+import { useSelector } from "react-redux";
+import { pumpSetup } from "../../actions/setupActions";
+import { useHistory } from "react-router-dom";
+import "./css/Pumpsetup.css";
 
 const PumpSetup = () => {
   const [numberOfPumps, setNumberOfPumps] = useState(0);
   const [dummyNumber, setDummyNumber] = useState(0);
   const [pumpDetails, setPumpDetails] = useState([]);
-
+  const { ownerId } = useSelector((state) => state.user);
+  const history=useHistory()
   const handleNumberOfPumpsChange = (e) => {
     setDummyNumber(Number(e.target.value));
   };
@@ -21,8 +25,11 @@ const PumpSetup = () => {
   };
 
   const handleSaveAll = () => {
-    // Handle saving all changes to the database
-    console.log("Saving all changes to the database: ", pumpDetails);
+    (async()=>{
+      if(await pumpSetup(ownerId,pumpDetails)){
+        history.push("/pumps")
+      }
+    })()
   };
   const handlePumpNumberSave = () => {
     setNumberOfPumps(dummyNumber);
