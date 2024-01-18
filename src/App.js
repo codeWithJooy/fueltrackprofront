@@ -14,6 +14,7 @@ import PumpSetup from './Pages/Headquarters/Pumpsetup';
 import Pump from './Pages/Headquarters/Pump';
 import Items from './Pages/Headquarters/Items';
 import Ledger from './Pages/Headquarters/Ledger';
+import Stock from "./Pages/Headquarters/Stock"
 function App() {
   return (
      <BrowserRouter>
@@ -31,6 +32,7 @@ function App() {
          <Route path="/pumps" component={Pump} />
          <Route path="/items" component={Items}/>
          <Route path="/ledger" component={Ledger} />
+         <Route path="/stock" component={Stock} />
        </Switch>
        <Toasty />
      </BrowserRouter>
