@@ -4,15 +4,13 @@ import SidebarHQ from "../../Components/Sidebar/SidebarHQ";
 import Header from "../../Components/Header/Header";
 import "./css/Pumps.css";
 import { getAllPumps } from "../../actions/pumpAction";
+import PumpHeader from "../../Components/Header/HQ/Pumps/PumpHeader";
 
 const Pump = () => {
   const { ownerId } = useSelector((state) => state.user);
   const [pumps, setPumps] = useState([]);
-  const [toggle, setToggle] = useState("add");
+  const [activeItem,setActiveItem]=useState("All Pumps")
   const [flex, setFlex] = useState(true);
-  const handleToggle = (value) => {
-    setToggle(value);
-  };
   useEffect(() => {
     if (!flex) return;
     (async () => {
@@ -24,28 +22,8 @@ const Pump = () => {
     <div className="main">
       <SidebarHQ page={"Pumps"} />
       <div className="page">
-        <Header title={"Pumps Section"} />
+        <PumpHeader activeItem={activeItem} setActiveItem={setActiveItem}/>
         <div className="cashMain">
-          <div className="toggleSection">
-            <div className="toggleContainer">
-              <button
-                className={`formButton ${
-                  toggle === "add" ? "toggleActive" : ""
-                }`}
-                onClick={() => handleToggle("add")}
-              >
-                Pumps
-              </button>
-              <button
-                className={`listButton ${
-                  toggle === "party" ? "toggleActive" : ""
-                }`}
-                onClick={() => handleToggle("party")}
-              >
-                Add Pump
-              </button>
-            </div>
-          </div>
           <div className="pumpContainer">
             {pumps &&
               pumps.length > 0 &&
