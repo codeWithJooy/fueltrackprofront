@@ -14,7 +14,7 @@ const SidebarHQ=({page})=>{
         <SidebarUnit title="Items"page={page} />
         <SidebarUnit title="Rate" page={page}/>
         <SidebarUnit title="Ledger" page={page} />
-        <SidebarUnit title="Nozels" page={page}/>
+        <SidebarUnit title="Stocks" page={page}/>
         <SidebarUnit title="Transactions" page={page}/>
         <SidebarUnit title="Log Out" page={page}/>
       </div> 

@@ -12,6 +12,8 @@ import Signup from './Pages/Signup/Signup';
 
 import PumpSetup from './Pages/Headquarters/Pumpsetup';
 import Pump from './Pages/Headquarters/Pump';
+import Items from './Pages/Headquarters/Items';
+import Ledger from './Pages/Headquarters/Ledger';
 function App() {
   return (
      <BrowserRouter>
@@ -27,6 +29,8 @@ function App() {
          <Route path="/signup" component={Signup} />
          <Route path="/pumpsetup" component={PumpSetup} />
          <Route path="/pumps" component={Pump} />
+         <Route path="/items" component={Items}/>
+         <Route path="/ledger" component={Ledger} />
        </Switch>
        <Toasty />
      </BrowserRouter>

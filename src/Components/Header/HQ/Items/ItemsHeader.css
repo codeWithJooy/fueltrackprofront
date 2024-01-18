@@ -1,0 +1,46 @@
+.itemsHeader{
+    width:100%;
+    padding:15px 20px;
+}
+.itemsHeader p{
+    font-size: 12px;
+    font-weight: 300;
+    color: #0d2c31;
+}
+.itemsPageDetails{
+  width:100%;
+}
+.itemsSelection{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom: 1px solid lightgray;
+}
+.itemSelectionUnit{
+    width:13%;
+    padding:10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+    border-bottom: 2px solid #fff;
+}
+.itemSelectionUnit p{
+    font-size: 15px;
+    font-weight: 400;
+}
+.itemSelectionUnit:hover{
+    border-bottom: 2px solid #0d2c31;
+}
+.itemSelectionUnit:hover p{
+    color:#0d2c31;
+    font-weight: bold;
+}
+.activeItemsSelection{
+    border-bottom: 2px solid #0d2c31;
+}
+.activeItemsSelection p{
+    font-weight: bold;
+    color: #0d2c31;
+}
