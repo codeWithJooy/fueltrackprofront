@@ -1,0 +1,86 @@
+.modelContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensure it's on top of other elements if needed */
+}
+.modelCard{
+    min-width: 200px;
+    min-height:200px;
+    padding:25px;
+    background-color: #f2f2f2;
+    z-index: 9999;
+    border-radius: 10px;
+    position: relative;
+}
+.closeModel{
+    position: absolute;
+    right:20px;
+    top:5;
+    height: 18px;
+    width:18px;
+    cursor: pointer;
+}
+.modelTitle{
+    width:100%;
+    text-align: center;
+}
+.modelTitle p{
+    font-size: 16px;
+    font-weight: bold;
+    color:#0d2c31;
+    margin-bottom: 15px;
+}
+.modelInputContainer{
+    width:100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.modelHalf{
+    width:50%;
+    display: flex;
+    flex-wrap: wrap;
+    padding:10px 15px;
+}
+.modelHalf label{
+    width:100%;
+}
+.modelHalf input{
+    width:100%;
+    border:none;
+    outline:none;
+    padding:10px 5px;
+}
+.modelInputContainer button{
+    width:100px;
+    margin-top: 20px;
+}
+.addModel{
+    background-color: #0d2c31;
+    color: #fff;
+    border:1px solid #0d2c31;
+    outline:none;
+}
+.addModel:hover{
+    background-color: #fff;
+    color: #0d2c31;
+    border:1px solid #0d2c31;
+}
+.cancelModel{
+    background-color: #fff;
+    color: #0d2c31;
+    border:1px solid #fff;
+    outline:none;
+}
+.cancelModel:hover{
+    background-color: #0d2c31;
+    color: #fff;
+    border:1px solid #fff;
+}

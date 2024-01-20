@@ -11,7 +11,7 @@
 }
 .signCard{
     width:800px;
-    height:500px;
+    min-height:500px;
     box-shadow: 0 0 5px lightgray;
     border-radius: 5px;
     display: flex;
@@ -27,6 +27,7 @@
    height:100%;
    border-radius: 5px;
 }
+
 .signDetails{
     width:50%;
     padding: 10px 45px;
@@ -107,4 +108,18 @@
     margin-left: 10px;
     font-weight: bold;
     cursor: pointer;
+}
+@media screen and (max-width:1000px) {
+    .signImage{
+        display: none;
+    }
+    .signDetails{
+        width:90%;
+        padding:10px;
+    }
+    .signCard{
+        width:90%;
+        min-height: 500px;
+        padding: 20px 0px;
+    }
 }
