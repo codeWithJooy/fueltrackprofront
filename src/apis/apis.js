@@ -12,7 +12,6 @@ const prodApis = {
   PUMP_API:"https://fueltrackpro.onrender.com/api/pump",
   STOCK_API:"https://fueltrackpro.onrender.com/api/stock",
 };
-
 const getApiUrls = () => {
   const environment = process.env.REACT_APP_ENV;
   console.log(environment);
