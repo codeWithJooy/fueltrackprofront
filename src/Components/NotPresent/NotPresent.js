@@ -1,10 +1,10 @@
 import React from "react"
 import "./NotPresent.css"
 
-const NotPresent=()=>{
+const NotPresent=({text="No Tanks Added"})=>{
     return(
         <div className="notPresent">
-            <p>No Tank Added</p>
+            <p>{text}</p>
         </div>
     )
 }

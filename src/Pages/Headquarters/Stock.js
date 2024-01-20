@@ -8,6 +8,7 @@ import "./css/Common.css";
 import StocksHeader from "../../Components/Header/HQ/Stocks/StocksHeader";
 import AddtankModel from "../../Components/Models/AddTankModel";
 import Tanks from "../../Components/HQ/Stock/Tanks/Tanks";
+import Nozels from "../../Components/HQ/Stock/Nozels/Nozels";
 const Stock = () => {
   const { ownerId } = useSelector((state) => state.user);
   const [activeItem,setActiveItem]=useState("Tanks")
@@ -19,6 +20,10 @@ const Stock = () => {
         {
           activeItem=="Tanks" &&
           <Tanks />
+        }
+                {
+          activeItem=="Nozels" &&
+          <Nozels/>
         }
     </div>
     </div>
