@@ -3,6 +3,7 @@
     height:100vh;
     padding:10px 20px;
     background-color: #0d2c31;
+    position: fixed;
   }
   .sidebarTitle{
       width:100%;
@@ -59,4 +60,9 @@
 }
   .sidebarUnit:hover{
       background-color: #254047;
+  }
+  @media screen and (max-width:1024px) {
+    .sidebar{
+        display: none;
+    }
   }

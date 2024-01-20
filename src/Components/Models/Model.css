@@ -58,6 +58,12 @@
     outline:none;
     padding:10px 5px;
 }
+.modelHalf select{
+    width:100%;
+    border:none;
+    outline:none;
+    padding:10px 5px;
+}
 .modelInputContainer button{
     width:100px;
     margin-top: 20px;

@@ -15,15 +15,23 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
 }
 
 .page{
   width:85%;
+  margin-left: 15%;
   height:100vh;
   padding:0px 10px;
   background-color: #fff;
 }
-
+@media screen and (max-width:1024px) {
+  .page{
+      width:100%;
+      margin-left: 0%;
+      padding:0px;
+  }
+}
 
 .cashMain{
   width:100%;

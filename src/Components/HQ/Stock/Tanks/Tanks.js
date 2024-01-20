@@ -5,42 +5,58 @@ import "./Tanks.css";
 import Dropdown from "../../../Dropdown/Dropdown";
 import AddtankModel from "../../../Models/AddTankModel";
 import NotPresent from "../../../NotPresent/NotPresent";
+import { getTanks } from "../../../../actions/stockAction";
 
 const Tanks = () => {
   const { ownerId } = useSelector((state) => state.user);
-  const [tankModel,setTankModel]=useState(false)
-
-  const openModel=()=>{
-    setTankModel(true)
-  }
-  const partyData = [
-    {
-      product: "MS",
-      quantity: "2345",
-      rate: "98.04",
-      amount: "229,903",
-    },
-    {
-        product: "HSD",
-        quantity: "6299",
-        rate: "90.35",
-        amount: "569114",
-      },
-      {
-        product: "Lube",
-        quantity: "1",
-        rate: "300",
-        amount: "300",
-      },
-  ];
+  const [pumpId, setPumpId] = useState("");
+  const [tankModel, setTankModel] = useState(false);
+  const [tanks, setTanks] = useState([]);
+  const openModel = () => {
+    setTankModel(true);
+  };
+  useEffect(() => {
+    if (tankModel) return;
+    (async () => {
+      let data = await getTanks(ownerId, pumpId);
+      setTanks(data);
+    })();
+  }, [tankModel,pumpId]);
   return (
     <div className="pageSection">
-      <Dropdown />
+      <Dropdown pumpId={pumpId} setPumpId={setPumpId} />
       <img src="Assets/HQ/add.png" className="addStock" onClick={openModel} />
-      <NotPresent />
       {
-        tankModel && <AddtankModel setTankModel={setTankModel} />
+        tanks.length <1 && <NotPresent />
       }
+      {
+        tanks.length >=1 && 
+        <table>
+        <thead style={{ background: "#19363C", color: "white" }}>
+          <tr>
+            <th>Tank Name</th>
+            <th>Product Name</th>
+            <th>Quantity(in Lts)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tanks.map((tank) => (
+            <tr key={tank._id}>
+              <td>{tank.tankName}</td>
+              <td>{tank.product}</td>
+              <td>{tank.quantity}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      }
+      {tankModel && (
+        <AddtankModel
+          setTankModel={setTankModel}
+          ownerId={ownerId}
+          pumpId={pumpId}
+        />
+      )}
     </div>
   );
 };
