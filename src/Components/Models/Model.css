@@ -40,6 +40,7 @@
 .modelInputContainer{
     width:100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
 }
@@ -89,4 +90,26 @@
     background-color: #0d2c31;
     color: #fff;
     border:1px solid #fff;
+}
+@media screen and (max-width:1024px) {
+    .modelCard{
+        width: 90%;
+        height:90vh;
+        padding:25px;
+        background-color: #f2f2f2;
+        z-index: 9999;
+        border-radius: 10px;
+        position: relative;
+        overflow-y: auto;
+    }
+    .modelHalf{
+        width:100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding:10px 15px;
+    }
+    .modelInputContainer button{
+        width:100%;
+        margin-top: 20px;
+    }
 }
