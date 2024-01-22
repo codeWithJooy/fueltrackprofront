@@ -14,9 +14,6 @@ const PumpHeader = ({ activeItem, setActiveItem }) => {
         <div className={`itemSelectionUnit ${activeItem=="All Pumps"?"activeItemsSelection":""}`} onClick={()=>selectItems("All Pumps")}>
           <p>All Pumps</p>
         </div>
-        <div className={`itemSelectionUnit ${activeItem=="New Pump"?"activeItemsSelection":""}`} onClick={()=>selectItems("Add Pump")}>
-          <p>Add Pump</p>
-        </div>
       </div>
     </div>
   );
