@@ -5,12 +5,14 @@ const devApis = {
   SETUP_API:"http://localhost:5000/api/setup",
   PUMP_API:"http://localhost:5000/api/pump",
   STOCK_API:"http://localhost:5000/api/stock",
+  LEDGER_API:"http://localhost:5000/api/ledger",
 };
 const prodApis = {
-  USER_API: "https://fueltrackpro.onrender.com/api/auth",
-  SETUP_API:"https://fueltrackpro.onrender.com/api/setup",
-  PUMP_API:"https://fueltrackpro.onrender.com/api/pump",
-  STOCK_API:"https://fueltrackpro.onrender.com/api/stock",
+  USER_API: "https://fueltrackpro-w52z.onrender.com/api/auth",
+  SETUP_API:"https://fueltrackpro-w52z.onrender.com/api/setup",
+  PUMP_API:"https://fueltrackpro-w52z.onrender.com/api/pump",
+  STOCK_API:"https://fueltrackpro-w52z.onrender.com/api/stock",
+  LEDGER_API:"https://fueltrackpro-w52z.onrender.com/api/ledger",
 };
 const getApiUrls = () => {
   const environment = process.env.REACT_APP_ENV;
@@ -38,4 +40,7 @@ export const pumpApi = axios.create({
 });
 export const stockApi=axios.create({
   baseURL:APIS.STOCK_API,
+})
+export const ledgerApi=axios.create({
+  baseURL:APIS.LEDGER_API,
 })
