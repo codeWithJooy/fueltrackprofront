@@ -9,7 +9,6 @@ const SidebarHQ=({page,setShowSidebar})=>{
             <p>FuelTrack Pro</p>
             <img src="Assets/HQ/close_sidebar.png" className='sidebarCross' onClick={()=>setShowSidebar(false)}/>
         </div>
-        <SidebarUnit title="Home" page={page}/>
         <SidebarUnit title="Pumps" page={page} />
         <SidebarUnit title="Users" page={page} />
         <SidebarUnit title="Items"page={page} />

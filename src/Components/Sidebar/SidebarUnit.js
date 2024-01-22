@@ -8,7 +8,12 @@ const SidebarUnit = ({ img, title, page }) => {
     const className = title == page ? 'sidebarUnitActive' : 'sidebarUnit';
     const history=useHistory()
     const handleRoute=()=>{
+        if(`${title.toLowerCase()}` === "rate" || `${title.toLowerCase()}` === "users" ||`${title.toLowerCase()}` === "transactions" || `${title.toLowerCase()}` === "log out"){
+            history.push(`/pumps`)
+        }
+        else{
         history.push(`/${title.toLowerCase()}`)
+        }
     }
     return (
         <div className={className} onClick={handleRoute}>
