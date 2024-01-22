@@ -5,9 +5,10 @@ import "./css/Common.css";
 import StocksHeader from "../../Components/Header/HQ/Stocks/StocksHeader";
 import Tanks from "../../Components/HQ/Stock/Tanks/Tanks";
 import Nozels from "../../Components/HQ/Stock/Nozels/Nozels";
+import Other from "../../Components/HQ/Stock/Other/Other";
 
 const Stock = () => {
-  const [activeItem,setActiveItem]=useState("Tanks")
+  const [activeItem, setActiveItem] = useState("Tanks");
   const [showSidebar, setShowSidebar] = useState(true);
   useEffect(() => {
     const handleResize = () => {
@@ -22,20 +23,19 @@ const Stock = () => {
 
   return (
     <div className="main">
-      {
-        showSidebar && <SidebarHQ page={"Stock"} setShowSidebar={setShowSidebar}/>
-      }
+      {showSidebar && (
+        <SidebarHQ page={"Stock"} setShowSidebar={setShowSidebar} />
+      )}
       <div className="page">
-        <StocksHeader activeItem={activeItem} setActiveItem={setActiveItem}  setShowSidebar={setShowSidebar}/>
-        {
-          activeItem=="Tanks" &&
-          <Tanks />
-        }
-                {
-          activeItem=="Nozels" &&
-          <Nozels/>
-        }
-    </div>
+        <StocksHeader
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+          setShowSidebar={setShowSidebar}
+        />
+        {activeItem == "Tanks" && <Tanks />}
+        {activeItem == "Nozels" && <Nozels />}
+        {activeItem == "Others" && <Other />}
+      </div>
     </div>
   );
 };

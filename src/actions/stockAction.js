@@ -140,3 +140,60 @@ export const addTank = async (data) => {
       return false;
     }
   };
+  export const getNoFuel = async (ownerId, pumpId) => {
+    try {
+      let req = {
+        ownerId,
+        pumpId,
+      };
+      const response = await stockApi.post("/getNoFuel", req);
+      if (response.data.code == 200) {
+        return response.data.model;
+      } else {
+        updateToast({
+          code: CodeAnalogy.ERROR,
+          title: "Non Fuel Not Present",
+        });
+        return [];
+      }
+    } catch (error) {
+      updateToast({
+        code: CodeAnalogy.ERROR,
+        title: "Something Went Wrong",
+      });
+      console.log(error.message);
+    }
+  };
+  export const addNoFuel = async (data) => {
+    try {
+      let req = {
+        ownerId:data.ownerId,
+        pumpId:data.pumpId,
+        productName:data.productName,
+        size:data.size,
+        quantity:data.quantity,
+    
+      };
+      const response = await stockApi.post("/addNoFuel", req);
+      if (response.data.code == 200) {
+        updateToast({
+            code: CodeAnalogy.SUCCESS,
+            title: `${data.productName} Added Successfully`,
+          });
+          return true;
+      } else {
+        updateToast({
+          code: CodeAnalogy.ERROR,
+          title: "Error Adding product",
+        });
+        return false;
+      }
+    } catch (error) {
+      updateToast({
+        code: CodeAnalogy.ERROR,
+        title: "Something Went Wrong",
+      });
+      console.log(error.message);
+      return false;
+    }
+  };
