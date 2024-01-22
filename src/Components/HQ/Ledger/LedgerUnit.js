@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import Dropdown from "../../Dropdown/Dropdown";
 import NotPresent from "../../NotPresent/NotPresent";
 import AddLedgerModel from "../../Models/AddLedgerModel";
+import { getLedger } from "../../../actions/ledgerAction";
 
 const LedgerUnit = () => {
   const { ownerId } = useSelector((state) => state.user);
@@ -12,7 +13,13 @@ const LedgerUnit = () => {
   const openModel = () => {
     setledgerModel(true);
   };
-
+  useEffect(() => {
+    if (ledgerModel) return;
+    (async () => {
+      let data = await getLedger(ownerId,pumpId);
+      setLedger(data);
+    })();
+  }, [ledgerModel,pumpId]);
   return (
     <div className="pageSection">
       <Dropdown pumpId={pumpId} setPumpId={setPumpId} />
@@ -25,17 +32,23 @@ const LedgerUnit = () => {
         <table>
         <thead style={{ background: "#19363C", color: "white" }}>
           <tr>
-            <th>Tank Name</th>
-            <th>Product Name</th>
-            <th>Quantity(in Lts)</th>
+            <th>Party Name</th>
+            <th>House</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Phone</th>
+            <th>Opening Balance</th>
           </tr>
         </thead>
         <tbody>
-          {ledger.map((tank) => (
-            <tr key={tank._id}>
-              <td>{tank.tankName}</td>
-              <td>{tank.product}</td>
-              <td>{tank.quantity}</td>
+          {ledger.map((ledgerData) => (
+            <tr key={ledgerData._id}>
+              <td>{ledgerData.partyName}</td>
+              <td>{ledgerData.house}</td>
+              <td>{ledgerData.city}</td>
+              <td>{ledgerData.state}</td>
+              <td>{ledgerData.mobile}</td>
+              <td>{ledgerData.openingBalance}</td>
             </tr>
           ))}
         </tbody>
