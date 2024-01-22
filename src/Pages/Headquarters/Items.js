@@ -9,11 +9,24 @@ import ItemUnit from "../../Components/HQ/Item/Items/ItemUnit";
 const Items = () => {
   const { ownerId } = useSelector((state) => state.user);
   const [activeItem, setActiveItem] = useState("all");
+  const [showSidebar, setShowSidebar] = useState(true);
+  useEffect(() => {
+    const handleResize = () => {
+      setShowSidebar(window.innerWidth > 768); // Adjust the threshold as needed
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div className="main">
-      <SidebarHQ page={"Items"} />
+      {
+        showSidebar && <SidebarHQ page={"Items"} setShowSidebar={setShowSidebar}/>
+      }
       <div className="page">
-        <ItemsHeader activeItem={activeItem} setActiveItem={setActiveItem} />
+        <ItemsHeader activeItem={activeItem} setActiveItem={setActiveItem} setShowSidebar={setShowSidebar}/>
         {activeItem == "all" && <ItemUnit />}
       </div>
     </div>

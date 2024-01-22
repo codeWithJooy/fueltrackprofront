@@ -6,16 +6,28 @@ import LedgerHeader from "../../Components/Header/HQ/Ledger/LedgerHeader";
 import LedgerUnit from "../../Components/HQ/Ledger/LedgerUnit";
 
 const Ledger = () => {
-  const [activeItem,setActiveItem]=useState("all")
+  const [activeItem, setActiveItem] = useState("all");
+  const [showSidebar, setShowSidebar] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowSidebar(window.innerWidth > 768); // Adjust the threshold as needed
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  
   return (
     <div className="main">
-      <SidebarHQ page={"Ledger"} />
+      {showSidebar && (
+        <SidebarHQ page={"Ledger"} setShowSidebar={setShowSidebar} />
+      )}
       <div className="page">
-        <LedgerHeader activeItem={activeItem} setActiveItem={setActiveItem}/>
-        {
-        activeItem=="all"
-        && <LedgerUnit/>
-      }
+        <LedgerHeader activeItem={activeItem} setActiveItem={setActiveItem} setShowSidebar={setShowSidebar}/>
+        {activeItem == "all" && <LedgerUnit />}
       </div>
     </div>
   );
