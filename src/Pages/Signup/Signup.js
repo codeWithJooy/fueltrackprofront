@@ -18,7 +18,7 @@ const Signup = () => {
   const handleSignup=()=>{
     (async()=>{
        if(await userSignup(user))(
-         history.push("/pumpsetup")
+         history.push("/pumps")
        )
     })()
   }

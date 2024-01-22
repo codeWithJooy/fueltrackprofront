@@ -12,11 +12,12 @@ const Pump = () => {
   const [pumps, setPumps] = useState([]);
   const [pumpModel, setPumpModel] = useState(false);
   const [activeItem, setActiveItem] = useState("All Pumps");
+  const [showSidebar, setShowSidebar] = useState(true);
   const [flex, setFlex] = useState(true);
 
-  const openModel=()=>{
-    setPumpModel(true)
-  }
+  const openModel = () => {
+    setPumpModel(true);
+  };
   useEffect(() => {
     if (pumpModel) return;
     (async () => {
@@ -24,13 +25,32 @@ const Pump = () => {
       setPumps(data);
     })();
   }, [pumpModel]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowSidebar(window.innerWidth > 768); // Adjust the threshold as needed
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className="main">
-      <SidebarHQ page={"Pumps"} />
+      {
+        showSidebar && <SidebarHQ page={"Pumps"} setShowSidebar={setShowSidebar}/>
+      }
+      
       <div className="page">
-        <PumpHeader activeItem={activeItem} setActiveItem={setActiveItem} />
+        <PumpHeader activeItem={activeItem} setActiveItem={setActiveItem} setShowSidebar={setShowSidebar}/>
         <div className="pageSection">
-          <img src="Assets/HQ/add.png" className="addStock" onClick={openModel}/>
+          <img
+            src="Assets/HQ/add.png"
+            className="addStock"
+            onClick={openModel}
+          />
           {pumps.length < 1 && <NotPresent text={"No Pumps Added"} />}
           {pumps.length >= 1 && (
             <table>

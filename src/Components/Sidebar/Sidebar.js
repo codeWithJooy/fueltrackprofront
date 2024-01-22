@@ -7,6 +7,7 @@ const Sidebar=({page})=>{
         <div className='sidebar'>
         <div className='sidebarTitle'>
             <p>FuelTrack Pro</p>
+            
         </div>
         <SidebarUnit title="CashBook" page={page}/>
         <SidebarUnit title="Cash" page={page} />

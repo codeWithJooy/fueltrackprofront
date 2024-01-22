@@ -2,11 +2,12 @@ import React from 'react'
 import SidebarUnit from './SidebarUnit'
 import "./Sidebar.css"
 
-const SidebarHQ=({page})=>{
+const SidebarHQ=({page,setShowSidebar})=>{
     return(
         <div className='sidebar'>
         <div className='sidebarTitle'>
             <p>FuelTrack Pro</p>
+            <img src="Assets/HQ/close_sidebar.png" className='sidebarCross' onClick={()=>setShowSidebar(false)}/>
         </div>
         <SidebarUnit title="Home" page={page}/>
         <SidebarUnit title="Pumps" page={page} />
