@@ -12,7 +12,7 @@ const Dropdown = ({pumpId,setPumpId}) => {
     (async () => {
       let data = await getAllPumps(ownerId);
       setPumpName(data);
-      if(data.length >1){
+      if(data.length >=1){
         setPumpId(data[0]._id)
       }
       setForceUpdate(false);
