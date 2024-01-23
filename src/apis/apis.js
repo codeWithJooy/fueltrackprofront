@@ -1,18 +1,19 @@
 import axios from "axios";
-
+const local="http://localhost:5000"
+const prod="https://fueltrackpro-4cd0.onrender.com"
 const devApis = {
-  USER_API: "http://localhost:5000/api/auth",
-  SETUP_API:"http://localhost:5000/api/setup",
-  PUMP_API:"http://localhost:5000/api/pump",
-  STOCK_API:"http://localhost:5000/api/stock",
-  LEDGER_API:"http://localhost:5000/api/ledger",
+  USER_API: `${local}/api/auth`,
+  SETUP_API:`${local}/api/setup`,
+  PUMP_API:`${local}/api/pump`,
+  STOCK_API:`${local}/api/stock`,
+  LEDGER_API:`${local}/api/ledger`,
 };
 const prodApis = {
-  USER_API: "https://fueltrackpro-w52z.onrender.com/api/auth",
-  SETUP_API:"https://fueltrackpro-w52z.onrender.com/api/setup",
-  PUMP_API:"https://fueltrackpro-w52z.onrender.com/api/pump",
-  STOCK_API:"https://fueltrackpro-w52z.onrender.com/api/stock",
-  LEDGER_API:"https://fueltrackpro-w52z.onrender.com/api/ledger",
+  USER_API: `${prod}/api/auth`,
+  SETUP_API:`${prod}/api/setup`,
+  PUMP_API:`${prod}/api/pump`,
+  STOCK_API:`${prod}/api/stock`,
+  LEDGER_API:`${prod}/api/ledger`,
 };
 const getApiUrls = () => {
   const environment = process.env.REACT_APP_ENV;
