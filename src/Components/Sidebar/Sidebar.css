@@ -69,7 +69,14 @@
   .sidebarUnit:hover{
       background-color: #254047;
   }
-
+  .partDetailsCardUnitDrop{
+    width:25%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .partDetailsCardUnitDrop img{
+   cursor: pointer;
+  }
   @media screen and (max-width:1024px) {
     .sidebar{
         width:65%;

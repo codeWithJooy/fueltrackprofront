@@ -114,8 +114,9 @@ export const addTank = async (data) => {
         pumpId:data.pumpId,
         nozelName:data.nozelName,
         product:data.product,
-        npd:data.npd,
+        mpd:data.mpd,
         tank:data.tank,
+        closingReading:data.closingReading
       };
       const response = await stockApi.post("/addNozel", req);
       if (response.data.code == 200) {

@@ -6,6 +6,7 @@ import { getAllPumps } from "../../actions/pumpAction";
 import PumpHeader from "../../Components/Header/HQ/Pumps/PumpHeader";
 import NotPresent from "../../Components/NotPresent/NotPresent";
 import AddPumpModel from "../../Components/Models/AddPumpModel";
+import PumpCard from "../../Components/Cards/PumpCard";
 
 const Pump = () => {
   const { ownerId } = useSelector((state) => state.user);
@@ -39,12 +40,16 @@ const Pump = () => {
 
   return (
     <div className="main">
-      {
-        showSidebar && <SidebarHQ page={"Pumps"} setShowSidebar={setShowSidebar}/>
-      }
-      
+      {showSidebar && (
+        <SidebarHQ page={"Pumps"} setShowSidebar={setShowSidebar} />
+      )}
+
       <div className="page">
-        <PumpHeader activeItem={activeItem} setActiveItem={setActiveItem} setShowSidebar={setShowSidebar}/>
+        <PumpHeader
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+          setShowSidebar={setShowSidebar}
+        />
         <div className="pageSection">
           <img
             src="Assets/HQ/add.png"
@@ -52,32 +57,23 @@ const Pump = () => {
             onClick={openModel}
           />
           {pumps.length < 1 && <NotPresent text={"No Pumps Added"} />}
-          {pumps.length >= 1 && (
-            <table>
-              <thead style={{ background: "#19363C", color: "white" }}>
-                <tr>
-                  <th>Pump Name</th>
-                  <th>Plot</th>
-                  <th>City</th>
-                  <th>State</th>
-                  <th>Owner</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pumps.map((pump) => (
-                  <tr key={pump._id}>
-                    <td onClick={() => alert("Hi")}>{pump.name}</td>
-                    <td>{pump.plotNo}</td>
-                    <td>{pump.city}</td>
-                    <td>{pump.state}</td>
-                    <td>{pump.owner}</td>
-                    <td>{"Active"}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+
+          <div className="cardHolder">
+
+             {
+              pumps.map((data,key)=>(
+                <PumpCard 
+                  key={data._id}
+                  id={data._id}
+                  name={data.name}
+                  owner={data.owner}
+                  street={data.street}
+                  city={data.city}
+                  state={data.state}
+                  />
+              ))
+             }
+          </div>
           {pumpModel && (
             <AddPumpModel setPumpModel={setPumpModel} ownerId={ownerId} />
           )}
