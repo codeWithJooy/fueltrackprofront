@@ -2,11 +2,13 @@ import React,{useState,useEffect} from "react"
 import SidebarPump from "../../../Components/Sidebar/SidebarPump"
 import "../../Headquarters/css/Items.css";
 import "../../Headquarters/css/Common.css";
-import StocksHeader from "../../../Components/Header/HQ/Stocks/StocksHeader";
 import SalesHeader from "../../../Components/Header/Pump/Sales/SalesHeader";
+import NozelSale from "./NozelSale";
+import OtherSale from "./OtherSale";
+import LedgerType from "./LedgerType";
 
 const Sales = () => {
-  const [activeItem, setActiveItem] = useState("All");
+  const [activeItem, setActiveItem] = useState("Nozel");
   const [showSidebar, setShowSidebar] = useState(true);
   useEffect(() => {
     const handleResize = () => {
@@ -30,6 +32,15 @@ const Sales = () => {
          setActiveItem={setActiveItem}
          setShowSidebar={setShowSidebar}
        />
+       {
+        activeItem=="Nozel" && <NozelSale/>
+       }
+       {
+        activeItem=="Others" && <OtherSale/>
+       }
+       {
+        activeItem=="Ledger" && <LedgerType />
+       }
       </div>
     </div>
   );

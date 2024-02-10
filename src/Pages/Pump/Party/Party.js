@@ -6,6 +6,7 @@ import "./Party.css";
 import PartyHeader from "../../../Components/Header/Pump/Party/PartyHeader";
 import AllPage from "./AllPage";
 import PartyDetails from "./PartyDetails";
+import Vehicle from "./Vehicle";
 
 const Party = () => {
   const [activeItem, setActiveItem] = useState("All");
@@ -41,6 +42,10 @@ const Party = () => {
          {
           activeItem == "Details" && 
           <PartyDetails />
+         }
+         {
+          activeItem == "Vehicle" && 
+          <Vehicle />
          }
       </div>
     </div>

@@ -5,7 +5,7 @@ const PumpCard = ({id,name,owner,street,city,state}) => {
   
     const history=useHistory()
     const handlePump=()=>{
-        localStorage.setItem('pumpId', JSON.stringify(id));
+        localStorage.setItem('pumpId',id);
         history.push("/sales")
     }
     return (
