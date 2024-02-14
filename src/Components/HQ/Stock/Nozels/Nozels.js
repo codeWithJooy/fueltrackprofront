@@ -7,7 +7,7 @@ import NotPresent from "../../../NotPresent/NotPresent";
 import { getNozels } from "../../../../actions/stockAction";
 
 const Nozels = () => {
-  const { ownerId } = useSelector((state) => state.user);
+  const ownerId=localStorage.getItem("ownerId")
   const [pumpId, setPumpId] = useState("");
   const [nozelModel, setNozelModel] = useState(false);
   const [nozels, setNozels] = useState([]);

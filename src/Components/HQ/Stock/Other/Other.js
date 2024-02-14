@@ -6,7 +6,7 @@ import NotPresent from "../../../NotPresent/NotPresent";
 import { getNoFuel, getTanks } from "../../../../actions/stockAction";
 
 const Other = () => {
-  const { ownerId } = useSelector((state) => state.user);
+  const ownerId=localStorage.getItem("ownerId")
 
   const [pumpId, setPumpId] = useState("");
   const [NoFuelModel, setNoFuelModel] = useState(false);
