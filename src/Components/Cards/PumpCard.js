@@ -6,7 +6,8 @@ const PumpCard = ({id,name,owner,street,city,state}) => {
     const history=useHistory()
     const handlePump=()=>{
         localStorage.setItem('pumpId',id);
-        history.push("/sales")
+        window.open("/sales", "_blank");
+       
     }
     return (
     <div className="pumpCard" onClick={handlePump}>

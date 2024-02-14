@@ -9,7 +9,7 @@ import AddPumpModel from "../../Components/Models/AddPumpModel";
 import PumpCard from "../../Components/Cards/PumpCard";
 
 const Pump = () => {
-  const { ownerId } = useSelector((state) => state.user);
+  const ownerId=localStorage.getItem("ownerId")
   const [pumps, setPumps] = useState([]);
   const [pumpModel, setPumpModel] = useState(false);
   const [activeItem, setActiveItem] = useState("All Pumps");

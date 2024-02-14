@@ -7,7 +7,7 @@ import NotPresent from "../../../NotPresent/NotPresent";
 import { getTanks } from "../../../../actions/stockAction";
 
 const UserSection = () => {
-  const { ownerId } = useSelector((state) => state.user);
+  const ownerId=localStorage.getItem("ownerId")
   const [pumpId, setPumpId] = useState("");
   const [userModel, setUserModel] = useState(false);
   const [tanks, setTanks] = useState([]);

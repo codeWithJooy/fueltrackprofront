@@ -8,7 +8,9 @@ const devApis = {
   STOCK_API:`${local}/api/stock`,
   LEDGER_API:`${local}/api/ledger`,
   PUMP_SALE_API:`${local}/api/pumps/sales`,
-  PUMP_PARTY_API:`${local}/api/pumps/party`
+  PUMP_PARTY_API:`${local}/api/pumps/party`,
+  PUMP_MISC_API:`${local}/api/pumps/misc`,
+  PUMP_EXPENDITURE_API:`${local}/api/pumps/expenditure`,
 };
 const prodApis = {
   USER_API: `${prod}/api/auth`,
@@ -16,8 +18,11 @@ const prodApis = {
   PUMP_API:`${prod}/api/pump`,
   STOCK_API:`${prod}/api/stock`,
   LEDGER_API:`${prod}/api/ledger`,
+
   PUMP_SALE_API:`${prod}/api/pumps/sales`,
-  PUMP_PARTY_API:`${prod}/api/pumps/party`
+  PUMP_PARTY_API:`${prod}/api/pumps/party`,
+  PUMP_MISC_API:`${prod}/api/pumps/misc`,
+  PUMP_EXPENDITURE_API:`${prod}/api/pumps/expenditure`,
 };
 const getApiUrls = () => {
   const environment = process.env.REACT_APP_ENV;
@@ -55,4 +60,10 @@ export const pumpSaleApi=axios.create({
 })
 export const pumpPartyApi=axios.create({
   baseURL:APIS.PUMP_PARTY_API
+})
+export const pumpMiscApi=axios.create({
+  baseURL:APIS.PUMP_MISC_API
+})
+export const pumpExpenditureApi=axios.create({
+  baseURL:APIS.PUMP_EXPENDITURE_API
 })
