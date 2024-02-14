@@ -44,3 +44,83 @@
     font-weight: 300px;
     color: gray;
 }
+
+.cardHolder{
+    width:100%;
+    padding-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+.pumpCard{
+    width:23%;
+    padding:10px;
+    border-radius: 10px;
+    border:none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-right: 2%;
+    box-shadow: 0 0 5px #0d2c31;
+}
+.pumpCard:hover{
+    box-shadow: 0 0 5px lightcoral;
+}
+.pumpImg{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pumpImg img{
+    width:120px;
+    height:auto;
+}
+.pumpDetails{
+    width:100%;
+}
+.pumpDesc{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin:5px 0px;
+}
+.pumpCardName{
+    width:100%;
+    text-align: center;
+}
+.pumpCardName p{
+    font-size: 15px;
+    font-weight: bold;
+}
+.pumpOwner{
+    width:40%;
+}
+.pumpOwner p{
+    font-size: 14px;
+}
+.pumpCity,.pumpCityRight{
+    width:50%;
+}
+.pumpCity p{
+    font-size: 13px;
+    color:gray;
+}
+.pumpCityRight{
+    display: flex;
+    justify-content: flex-end;
+}
+@media screen and (max-width:1024px) {
+    .pumpCard{
+        width:80%;
+    }
+    .cardHolder{
+        width:100%;
+        padding-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}

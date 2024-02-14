@@ -1,0 +1,30 @@
+.boxCard{
+    width:15%;
+    padding:20px;
+    box-shadow: 0 0 5px #0d2c31;
+    border:none;
+    border-radius:5px;
+    cursor: pointer;
+}
+.boxCardImg{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.boxCardImg img{
+  width:50px;
+  height:auto;
+}
+
+.boxCardTitle{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.boxCardTitle p{
+   font-size: 15px;
+   font-weight: bold;
+}

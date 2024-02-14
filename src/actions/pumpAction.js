@@ -46,6 +46,8 @@ export const addPump = async (data) => {
       name: data.name,
       plotNo: data.plotNo,
       street: data.street,
+      city:data.city,
+      state:data.state,
       owner: data.owner,
       pan: data.pan,
       gstin: data.gstin,

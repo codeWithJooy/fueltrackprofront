@@ -3,7 +3,7 @@ import "./Model.css";
 import { ItemData } from "../../Data/Items";
 import { addNozel, getTankByProduct } from "../../actions/stockAction";
 
-const AddNozelModel = ({ setNozelModel,ownerId,pumpId }) => {
+const AddUserModel = ({ setUserModel,ownerId,pumpId }) => {
   const defaultProduct = ItemData.find((e) => e.type === "Fuel");
   const [tanks,setTanks]=useState([])
   const [data,setData]=useState({
@@ -11,9 +11,8 @@ const AddNozelModel = ({ setNozelModel,ownerId,pumpId }) => {
     pumpId,
     nozelName:"",
     product: defaultProduct ? defaultProduct.symbol : "",
-    mpd:"",
+    npd:"",
     tank:"",
-    closingReading:"",
   })
 
   const handleChange=(e)=>{
@@ -28,7 +27,7 @@ const AddNozelModel = ({ setNozelModel,ownerId,pumpId }) => {
   const handleNozelAdd=()=>{
     (async()=>{
       if(await addNozel(data)){
-        setNozelModel(false)
+        setUserModel(false)
       }
     })()
   }
@@ -47,14 +46,14 @@ const AddNozelModel = ({ setNozelModel,ownerId,pumpId }) => {
         <img
           src="Assets/HQ/close.png"
           className="closeModel"
-          onClick={() => setNozelModel(false)}
+          onClick={() => setUserModel(false)}
         />
         <div className="modelTitle">
-          <p>Add Nozel Details</p>
+          <p>Add User Details</p>
         </div>
         <div className="modelInputContainer">
           <div className="modelHalf">
-            <label>Nozel Name</label>
+            <label>First Name</label>
             <input 
               type="text"
               name="nozelName"
@@ -63,48 +62,39 @@ const AddNozelModel = ({ setNozelModel,ownerId,pumpId }) => {
             />
           </div>
           <div className="modelHalf">
-            <label>Product</label>
-            <select onChange={handleSelect}>
-              {ItemData.filter((e) => e.type == "Fuel").map((d) => (
-                <option key={d.symbol} value={d.symbol}>{d.symbol}</option>
-              ))}
-            </select>
+            <label>Last Name</label>
+            <input 
+              type="text"
+              name="nozelName"
+              value={data.nozelName}
+              onChange={handleChange}
+            />
           </div>
         </div>
         <div className="modelInputContainer">
           <div className="modelHalf">
-            <label>MPD</label>
+            <label>Email</label>
             <input 
               type="text"
-              name="mpd"
-              value={data.mpd}
+              name="npd"
+              value={data.npd}
               onChange={handleChange}
             />
           </div>
           <div className="modelHalf">
-            <label>Tank</label>
-            <select onChange={handleSelectTank}>
-              {tanks.map((d) => (
-                <option key={d._id} value={d.tankName}>{d.tankName}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-        <div className="modelInputContainer">
-          <div className="modelHalf">
-            <label>Closing Reading</label>
+            <label>Password</label>
             <input 
               type="text"
-              name="closingReading"
-              value={data.closingReading}
+              name="npd"
+              value={data.npd}
               onChange={handleChange}
             />
           </div>
         </div>
 
         <div className="modelInputContainer">
-          <button className="addModel" onClick={handleNozelAdd}> Add Nozel</button>
-          <button className="cancelModel" onClick={() => setNozelModel(false)}>
+          <button className="addModel" onClick={handleNozelAdd}> Add User </button>
+          <button className="cancelModel" onClick={() => setUserModel(false)}>
             Cancel
           </button>
         </div>
@@ -113,4 +103,4 @@ const AddNozelModel = ({ setNozelModel,ownerId,pumpId }) => {
   );
 };
 
-export default AddNozelModel;
+export default AddUserModel;

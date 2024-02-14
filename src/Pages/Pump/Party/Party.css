@@ -1,0 +1,77 @@
+.partyContent{
+    padding:10px 15px;
+    width:100%;
+    height:calc(100vh - 80px);
+    position: relative;
+}
+.partyDropdowns{
+    width:100%;
+}
+.partyDropdownContainers{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.dropContainer{
+    width:20%;
+    margin-right:5%;
+}
+.dropContainer select,input{
+    width:100%;
+    padding:10px 5px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    outline: none;
+}
+@media screen and (max-width:1024px) {
+    .dropContainer{
+        width:31%;
+        margin-right: 2%;
+    }
+}
+.partyCardHolder{
+    width:100%;
+}
+.partyCard{
+    width:100%;
+    padding:10px 10px;
+    border:none;
+    box-shadow: 0 0 5px lightgrey;
+    border-radius: 5px;
+    margin: 10px 0px;
+}
+.partyDetails{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+}
+.partyName{
+    width:25%;
+}
+.partyName p{
+    font-size: 15px;
+    font-weight: bold;
+}
+.partyCardUnit{
+    width:25%;
+}
+.partyCardUnit p{
+    font-size: 15px;
+}
+.partyCardRow{
+    width: 100%;
+    display: flex;
+    align-items:center ;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+.partyDetailsCardUnit{
+    width:25%;
+    text-align: center;
+}
+.partyCardUnit p{
+    font-size: 15px;
+}
