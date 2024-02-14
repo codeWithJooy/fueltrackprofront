@@ -4,6 +4,7 @@ import "../../Headquarters/css/Items.css";
 import "../../Headquarters/css/Common.css";
 
 import BankHeader from "../../../Components/Header/Pump/Bank/BankHeader";
+import AllBank from "./AllBank";
 
 const Bank = () => {
   const [activeItem, setActiveItem] = useState("All");
@@ -30,7 +31,7 @@ const Bank = () => {
           setActiveItem={setActiveItem}
           setShowSidebar={setShowSidebar}
         />
-
+        <AllBank/>
       </div>
     </div>
   );

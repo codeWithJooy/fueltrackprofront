@@ -31,7 +31,7 @@ const Nozels = () => {
           <thead style={{ background: "#19363C", color: "white" }}>
             <tr>
               <th>Nozel Name</th>
-              <th>Npd</th>
+              <th>Mpd</th>
               <th>Tank</th>
               <th>Product</th>
             </tr>
@@ -40,7 +40,7 @@ const Nozels = () => {
             {nozels.map((tank) => (
               <tr key={tank._id}>
                 <td>{tank.nozelName}</td>
-                <td>{tank.npd}</td>
+                <td>{tank.mpd}</td>
                 <td>{tank.tank}</td>
                 <td>{tank.product}</td>
               </tr>

@@ -23,6 +23,29 @@ export const getNozelByPumpId = async (pumpId) => {
     console.log(error);
   }
 };
+export const getNozelReading = async (data) => {
+  try {
+    let pumpData = {
+      pumpId:data.pumpId,
+      mpd:data.mpd,
+      date:data.date,
+      status:data.status
+    };
+    const response = await pumpSaleApi.post("/getNozelReading", pumpData);
+    if (response.data.code == 200) {
+      return response.data.model;
+    } else {
+      return false;
+    }
+  } catch(error) {
+    updateToast({
+      code: CodeAnalogy.ERROR,
+      title: "Something Went Wrong",
+      message: "Error in User Signup",
+    });
+    console.log(error);
+  }
+};
 export const getPumpNozelClosingMeter = async (pumpId,nozelId) => {
   try {
     let pump = {
@@ -46,21 +69,10 @@ export const getPumpNozelClosingMeter = async (pumpId,nozelId) => {
 };
 export const addNozelReading = async (data) => {
   try {
-    let pumpData = {
-      pumpId:data.pumpId,
-      nozelId:data.nozelId,
-      nozelName:data.nozelName,
-      date:data.date,
-      openingMeter:data.openingMeter,
-      closingMeter:data.closingMeter,
-      testing:data.testing,
-      additionalOut:data.additionalOut,
-      additionalIn:data.additionalIn,
-      netSales:data.netSales,
-      salesDsr:data.salesDsr,
-      salesDiff:data.salesDiff,
-    };
-    const response = await pumpSaleApi.post("/addNozelReading", pumpData);
+    let pumpData={
+      data:data
+    }
+    const response = await pumpSaleApi.post("/addNozelReadingFinal", pumpData);
     if (response.data.code == 200) {
       updateToast({
         code:CodeAnalogy.SUCCESS,
@@ -167,6 +179,26 @@ export const getAllProducts = async (pumpId) => {
       pumpId,
     };
     const response = await pumpSaleApi.post("/getAllProducts", pump);
+    if (response.data.code == 200) {
+      return response.data.model;
+    } else {
+      return false;
+    }
+  } catch(error) {
+    updateToast({
+      code: CodeAnalogy.ERROR,
+      title: "Something Went Wrong",
+      message: "Error in User Signup",
+    });
+    console.log(error);
+  }
+};
+export const getNozelData = async (pumpId) => {
+  try {
+    let pump = {
+      pumpId,
+    };
+    const response = await pumpSaleApi.post("/getNozelData", pump);
     if (response.data.code == 200) {
       return response.data.model;
     } else {

@@ -4,6 +4,7 @@ import "../../Headquarters/css/Items.css";
 import "../../Headquarters/css/Common.css";
 
 import PurchaseHeader from "../../../Components/Header/Pump/Purchase/PurchaseHeader";
+import AllPurchase from "./AllPurchase";
 
 const Purchase = () => {
   const [activeItem, setActiveItem] = useState("All");
@@ -30,7 +31,9 @@ const Purchase = () => {
           setActiveItem={setActiveItem}
           setShowSidebar={setShowSidebar}
         />
-
+        {
+        activeItem=="All" && <AllPurchase />
+       }
       </div>
     </div>
   );

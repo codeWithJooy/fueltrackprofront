@@ -1,78 +1,53 @@
 import React, { useEffect, useState } from "react";
 import "../Party/Party.css";
-import AddNozelSalesModel from "../../../Components/Models/PumpModel/AddNozelSalesModel";
 import {
   getNozelByPumpId,
   getPumpNozelSale,
-  getNozelData,
-  getNozelReading
 } from "../../../actions/pumpAction/salesAction";
 import moment from "moment";
-import AddNozelSaleFinal from "../../../Components/Models/PumpModel/AddNozelSaleFinal";
+import AddPurchaseModel from "../../../Components/Models/PumpModel/AddPurchaseModel";
 
-const NozelSale = () => {
+const AllPurchase = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [nozels, setNozels] = useState([]);
-  const [mpdData,setMpdData]=useState([])
   const [sale, setSale] = useState([]);
-  const [nozelSalesModel, setNozelSalesModel] = useState(false);
+  const [purchaseModel, setPurchaseModel] = useState(false);
 
   let pumpId = localStorage.getItem("pumpId");
 
   const [searchData, setSearchData] = useState({
-    pumpId:localStorage.getItem("pumpId"),
-    mpd: "",
+    nozel: "All",
     date: moment().format("YYYY-MM-DD"),
-    status:"Pending"
   });
 
-  const handleMpd=(e)=>{
-    setSearchData({...searchData,mpd:e.target.value})
-  }
-  const handleStatus=(e)=>{
-    setSearchData({...searchData,status:e.target.value})
-  }
   useEffect(() => {
     (async () => {
-      let dat=await getNozelData( localStorage.getItem("pumpId"))
-      setMpdData(dat)
+      let nozelsData = await getNozelByPumpId(pumpId);
+      setNozels(nozelsData);
     })();
-  }, [nozelSalesModel]);
-
-  useEffect(()=>{
-    (async()=>{
-      let search=await getNozelReading(searchData)
-      setSale(search)
-    })()
-  },[nozelSalesModel,searchData])
-
+  }, [purchaseModel]);
+  useEffect(() => {
+    (async () => {
+      let nozelData = await getPumpNozelSale(pumpId);
+      setSale(nozelData);
+    })();
+  }, [purchaseModel]);
   return (
     <div className="partyContent">
       <img
         src="Assets/HQ/add.png"
         className="addStock"
         onClick={() => {
-          setNozelSalesModel(true);
+          setPurchaseModel(true);
         }}
       />
       <div className="partyDropdowns">
         <div className="partyDropdownContainers">
-
           <div className="dropContainer">
-            <select onChange={handleMpd}>
-              <option>Select MPD</option>
-              {Array.from(new Set(mpdData.map((item) => item.mpd))).map((mpd) => (
-                <option key={mpd} value={mpd}>
-                  {mpd}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="dropContainer">
-            <select onChange={handleStatus}>
-              <option>Pending</option>
-              <option>Approved</option>
-              <option>Rejected</option>
+            <select>
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
             </select>
           </div>
           <div className="dropContainer">
@@ -124,12 +99,11 @@ const NozelSale = () => {
             )}
           </div>
         ))}
-
-      {nozelSalesModel && (
-        <AddNozelSaleFinal setNozelSalesModel={setNozelSalesModel} />
+      {purchaseModel && (
+        <AddPurchaseModel setPurchaseModel={setPurchaseModel} />
       )}
     </div>
   );
 };
 
-export default NozelSale;
+export default AllPurchase;
