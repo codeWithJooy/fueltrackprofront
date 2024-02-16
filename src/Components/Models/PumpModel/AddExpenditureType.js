@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "../Model.css";
+import { addExpenditureType } from "../../../actions/pumpAction/expenditureAction";
 
 const AddExpenditureType = ({ setExpenditureType = "" }) => {
   const [data, setData] = useState({
-    pumpId: "123456",
+    pumpId: localStorage.getItem("pumpId"),
     expenditureType: "",
   });
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-  const handleSelect = (e) => {
-    setData({ ...data, group: e.target.value });
-  };
+
   const handlePumpAdd = () => {
-    (async () => {})();
-  };
+    (async()=>{
+      if(await addExpenditureType(data)){
+       setExpenditureType(false) 
+      }
+    })()
+  }
 
   return (
     <div className="modelContainer">
@@ -31,7 +34,7 @@ const AddExpenditureType = ({ setExpenditureType = "" }) => {
         <div className="modelInputContainer">
           <div className="modelHalf">
             <label>Expense Type</label>
-            <input type="text" name="expenditureType" value={data.expenditureType} />
+            <input type="text" name="expenditureType" value={data.expenditureType} onChange={handleChange}/>
           </div>
         </div>
 

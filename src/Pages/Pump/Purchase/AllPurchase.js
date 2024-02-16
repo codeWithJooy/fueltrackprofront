@@ -6,32 +6,41 @@ import {
 } from "../../../actions/pumpAction/salesAction";
 import moment from "moment";
 import AddPurchaseModel from "../../../Components/Models/PumpModel/AddPurchaseModel";
+import { getPumpPurchase } from "../../../actions/pumpAction/purchaseAction";
+import { ItemData } from "../../../Data/Items";
 
 const AllPurchase = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [nozels, setNozels] = useState([]);
   const [sale, setSale] = useState([]);
   const [purchaseModel, setPurchaseModel] = useState(false);
+  const [purchase,setPurchase]=useState([])
 
   let pumpId = localStorage.getItem("pumpId");
 
   const [searchData, setSearchData] = useState({
-    nozel: "All",
+    pumpId: localStorage.getItem("pumpId"),
     date: moment().format("YYYY-MM-DD"),
+    status:"Pending",
+    itemName:"",
   });
+  
+  const handleItem=(e)=>{
+    setSearchData({...searchData,itemName:e.target.value})
+  }
+  const handleStatus=(e)=>{
+    setSearchData({...searchData,status:e.target.value})
+  }
+  const handleDate=(e)=>{
+    setSearchData({...searchData,date:moment().format(e.target.value)})
+  }
+  useEffect(() => {
+    (async () => {
+      let purchaseData = await getPumpPurchase(searchData)
+      setPurchase(purchaseData)
+    })();
+  }, [purchaseModel,searchData]);
 
-  useEffect(() => {
-    (async () => {
-      let nozelsData = await getNozelByPumpId(pumpId);
-      setNozels(nozelsData);
-    })();
-  }, [purchaseModel]);
-  useEffect(() => {
-    (async () => {
-      let nozelData = await getPumpNozelSale(pumpId);
-      setSale(nozelData);
-    })();
-  }, [purchaseModel]);
   return (
     <div className="partyContent">
       <img
@@ -43,30 +52,40 @@ const AllPurchase = () => {
       />
       <div className="partyDropdowns">
         <div className="partyDropdownContainers">
+        <div className="dropContainer">
+            <select onChange={handleItem}>
+              <option value="">All Items</option>
+              {
+                ItemData && ItemData.map((data)=>(
+                  <option>{data.symbol}</option>
+                ))
+              }
+            </select>
+          </div>
           <div className="dropContainer">
-            <select>
+            <select onChange={handleStatus}>
               <option value="Pending">Pending</option>
               <option value="Approved">Approved</option>
               <option value="Rejected">Rejected</option>
             </select>
           </div>
           <div className="dropContainer">
-            <input type="date" value={searchData.date} />
+            <input type="date" value={searchData.date} onChange={handleDate}/>
           </div>
         </div>
       </div>
-      {sale &&
-        sale.map((data, index) => (
+      {purchase &&
+        purchase.map((data, index) => (
           <div className="partyCard">
             <div className="partyCardRow">
               <div className="partyName">
-                <p>{data.nozelName}</p>
+                <p>{data.supplierName}</p>
               </div>
               <div className="partyDetailsCardUnit">
-                <p>Opening:{data.openingMeter}</p>
+                <p>Item:{data.itemName}</p>
               </div>
               <div className="partyDetailsCardUnit">
-                <p>Closing:{data.closingMeter}</p>
+                <p>Quantity:{data.qty}</p>
               </div>
               <div className="partDetailsCardUnitDrop">
                 <img
@@ -79,24 +98,6 @@ const AllPurchase = () => {
                 />
               </div>
             </div>
-            {isOpen && (
-              <>
-                <div className="partyCardRow">
-                  <div className="partyDetailsCardUnit">
-                    <p>Testing:{data.testing}</p>
-                  </div>
-                  <div className="partyDetailsCardUnit">
-                    <p>Add. In:{data.additionalIn}</p>
-                  </div>
-                  <div className="partyDetailsCardUnit">
-                    <p>Add. Out:{data.additionalOut}</p>
-                  </div>
-                  <div className="partyDetailsCardUnit">
-                    <p>Net Sales:{data.netSales}</p>
-                  </div>
-                </div>
-              </>
-            )}
           </div>
         ))}
       {purchaseModel && (

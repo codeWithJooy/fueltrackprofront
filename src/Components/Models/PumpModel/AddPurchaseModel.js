@@ -1,33 +1,34 @@
 import React, { useEffect, useState } from "react";
 import "../Model.css";
+import { ItemData } from "../../../Data/Items";
 import moment from "moment";
+import { addPumpPurchase } from "../../../actions/pumpAction/purchaseAction";
 
 const AddPurchaseModel = ({ setPurchaseModel = "" }) => {
   const [data, setData] = useState({
     pumpId: localStorage.getItem("pumpId"),
     date: moment().format("YYYY-MM-DD"),
     supplierName: "",
-    supplierInvoice: "Not Present",
-    invoiceDate:  moment().format("YYYY-MM-DD"),
     purchaseLedger: "",
     itemName: "",
     qty: "",
-    rate: "Not Present",
-    amount: "Not Present",
-    deliveryCharge:"Not Present",
-    tcs:"Not Present",
-    extra:"Not Present",
-    roundoff: "Not Present",
   });
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-  const handleSelect = (e) => {
-    setData({ ...data, group: e.target.value });
+  const handleItemSelect = (e) => {
+    setData({ ...data, itemName: e.target.value });
+  };
+  const handleLedger = (e) => {
+    setData({ ...data, purchaseLedger: e.target.value });
   };
   const handlePurchaseAdd = () => {
-    console.log(data)
+    (async()=>{
+      if(await addPumpPurchase(data)){
+        setPurchaseModel(false)
+      }
+    })()
   };
 
   return (
@@ -59,23 +60,28 @@ const AddPurchaseModel = ({ setPurchaseModel = "" }) => {
         <div className="modelInputContainer">
           <div className="modelHalf">
             <label>Item Name</label>
-            <select>
-              <option>Item 1</option>
-              <option>Item 2</option>
+            <select onChange={handleItemSelect}>
+              <option>Select Item</option>
+              {
+                ItemData && ItemData.map((data)=>(
+                   <option>{data.symbol}</option>
+                ))
+              }
             </select>
           </div>
           <div className="modelHalf">
             <label>Purchase Ledger</label>
-            <select>
-              <option>Item 1</option>
-              <option>Item 2</option>
+            <select onChange={handleLedger}>
+              <option>Select Legder</option>
+              <option>Kaccha</option>
+              <option>Pakka</option>
             </select>
           </div>
         </div>
         <div className="modelInputContainer">
           <div className="modelHalf">
             <label>Quantity</label>
-            <input type="text" name="details" value={data.details} />
+            <input type="text" name="qty" value={data.qty} onChange={handleChange} />
           </div>
         </div>
 
