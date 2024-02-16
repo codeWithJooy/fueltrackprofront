@@ -1,3 +1,10 @@
+.boxContainer{
+    width:100%;
+    height:100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
 .boxCard{
     width:15%;
     padding:20px;
@@ -5,6 +12,7 @@
     border:none;
     border-radius:5px;
     cursor: pointer;
+    margin:0px 10px;
 }
 .boxCardImg{
     width:100%;

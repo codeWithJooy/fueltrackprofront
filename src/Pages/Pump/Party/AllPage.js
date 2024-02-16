@@ -1,16 +1,48 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AddPartySalesModel from "../../../Components/Models/PumpModel/AddPartySalesModel";
-import { getPartySales } from "../../../actions/pumpAction/partyAction";
+import {
+  getPartySales,
+  getPartyName,
+} from "../../../actions/pumpAction/partyAction";
+import moment from "moment";
+
 const AllPage = () => {
   const [partySalesModel, setPartySalesModel] = useState(false);
   const [partyData, setPartyData] = useState([]);
+  const [partyName, setPartyName] = useState([]);
 
+  const [search, setSearch] = useState({
+    pumpId: localStorage.getItem("pumpId"),
+    partyName: "",
+    date: moment().format("YYYY-MM-DD"),
+    salesLedger: "",
+  });
+
+  const handleDate=(e)=>{
+    setSearch({...search,date:moment().format(e.target.value)})
+  }
+  const handleLedger=(e)=>{
+    setSearch({...search,salesLedger:e.target.value})
+  }
+  const handleParty=(e)=>{
+    setSearch({...search,partyName:e.target.value})
+  }
   useEffect(() => {
     (async () => {
-      let party = await getPartySales({pumpId:localStorage.getItem("pumpId")});
+      let party = await getPartySales(search);
       setPartyData(party);
     })();
-  }, [partySalesModel]);
+  }, [partySalesModel,search]);
+
+  useEffect(() => {
+   (
+    async () => {
+      let name = await getPartyName(localStorage.getItem("pumpId"));
+      setPartyName(name);
+    }
+   )()
+  }, []);
+
   return (
     <div className="partyContent">
       <img
@@ -21,19 +53,20 @@ const AllPage = () => {
       <div className="partyDropdowns">
         <div className="partyDropdownContainers">
           <div className="dropContainer">
-            <select>
-              <option>Party1</option>
-              <option>Party1</option>
+            <select onChange={handleParty}>
+              <option value="">All Party</option>
+              {partyName && partyName.map((data) => <option>{data.partyName}</option>)}
             </select>
           </div>
           <div className="dropContainer">
-            <select>
-              <option>Sales Ledger 1</option>
-              <ption>Sales Ledger 2</ption>
+            <select onChange={handleLedger}> 
+              <option value="">All Ledger</option>
+              <option>Kaccha</option>
+              <option>Pakka</option>
             </select>
           </div>
           <div className="dropContainer">
-            <input type="date" />
+            <input type="date" name="data" value={search.date} onChange={handleDate}/>
           </div>
         </div>
       </div>

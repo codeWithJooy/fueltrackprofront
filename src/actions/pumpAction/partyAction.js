@@ -97,6 +97,10 @@ export const getPartySales=async(data)=>{
   try{
     let OtherData = {
       pumpId: data.pumpId,
+      date:data.date,
+      partyName:data.partyName,
+      salesLedger:data.salesLedger,
+      vehicle:data.vehicle
     };
     const response = await pumpPartyApi.post("/getPartySales", OtherData);
     if (response.data.code == 200) {

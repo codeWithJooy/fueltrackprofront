@@ -9,6 +9,7 @@ const devApis = {
   LEDGER_API:`${local}/api/ledger`,
   PUMP_SALE_API:`${local}/api/pumps/sales`,
   PUMP_PARTY_API:`${local}/api/pumps/party`,
+  PUMP_PURCHASE_API:`${local}/api/pumps/purchase`,
   PUMP_MISC_API:`${local}/api/pumps/misc`,
   PUMP_EXPENDITURE_API:`${local}/api/pumps/expenditure`,
 };
@@ -21,6 +22,7 @@ const prodApis = {
 
   PUMP_SALE_API:`${prod}/api/pumps/sales`,
   PUMP_PARTY_API:`${prod}/api/pumps/party`,
+  PUMP_PURCHASE_API:`${prod}/api/pumps/purchase`,
   PUMP_MISC_API:`${prod}/api/pumps/misc`,
   PUMP_EXPENDITURE_API:`${prod}/api/pumps/expenditure`,
 };
@@ -66,4 +68,7 @@ export const pumpMiscApi=axios.create({
 })
 export const pumpExpenditureApi=axios.create({
   baseURL:APIS.PUMP_EXPENDITURE_API
+})
+export const pumpPurchaseApi=axios.create({
+  baseURL:APIS.PUMP_PURCHASE_API
 })
