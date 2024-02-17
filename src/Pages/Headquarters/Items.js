@@ -5,6 +5,7 @@ import "./css/Items.css";
 import "./css/Common.css";
 import ItemsHeader from "../../Components/Header/HQ/Items/ItemsHeader";
 import ItemUnit from "../../Components/HQ/Item/Items/ItemUnit";
+import NewItem from "../../Components/HQ/Item/Items/NewItem";
 
 const Items = () => {
   const { ownerId } = useSelector((state) => state.user);
@@ -28,6 +29,7 @@ const Items = () => {
       <div className="page">
         <ItemsHeader activeItem={activeItem} setActiveItem={setActiveItem} setShowSidebar={setShowSidebar}/>
         {activeItem == "all" && <ItemUnit />}
+        {activeItem == "newreq" && <NewItem/>}
       </div>
     </div>
   );
