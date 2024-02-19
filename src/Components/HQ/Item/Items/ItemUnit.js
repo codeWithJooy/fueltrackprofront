@@ -5,13 +5,14 @@ import { ItemData } from "../../../../Data/Items";
 const ItemUnit = () => {
   const { ownerId } = useSelector((state) => state.user);
   const [tankModel,setTankModel]=useState(false)
-
+  
   const openModel=()=>{
     setTankModel(true)
   }
   return (
     <div className="pageSection">
-            <table>
+     
+        <table>
         <thead style={{ background: "#19363C", color: "white" }}>
           <tr>
             <th>Symbol</th>
@@ -24,13 +25,15 @@ const ItemUnit = () => {
           {ItemData.map((party) => (
             <tr key={party.symbol}>
               <td>{party.symbol}</td>
-              <td>{party.product}</td>
+              <td>{party.productName}</td>
               <td>{party.unit}</td>
               <td>{party.type}</td>
             </tr>
           ))}
         </tbody>
       </table>
+     
+
     </div>
   );
 };

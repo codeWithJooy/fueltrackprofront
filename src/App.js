@@ -10,6 +10,7 @@ import Sales from './Pages/Pump/Sales/Sales';
 import Login from './Pages/Signup/Login';
 import Signup from './Pages/Signup/Signup';
 import Party from './Pages/Pump/Party/Party';
+import Rate from './Pages/Headquarters/Rate';
 
 import PumpSetup from './Pages/Headquarters/Pumpsetup';
 import Pump from './Pages/Headquarters/Pump';
@@ -32,6 +33,7 @@ function App() {
          <Route path="/party" component={Party} />
          <Route path="/expenditure" component={Expenditure} />
          <Route path="/purchase" component={Purchase} />
+         <Route path="/rate" component={Rate} />
 
          <Route path="/login" component={Login} />
          <Route path="/signup" component={Signup} />
