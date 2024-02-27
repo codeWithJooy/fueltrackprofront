@@ -28,8 +28,8 @@ const Items = () => {
       }
       <div className="page">
         <ItemsHeader activeItem={activeItem} setActiveItem={setActiveItem} setShowSidebar={setShowSidebar}/>
-        {activeItem == "all" && <ItemUnit />}
-        {activeItem == "newreq" && <NewItem/>}
+        {activeItem == "all" && <NewItem/>}
+        
       </div>
     </div>
   );

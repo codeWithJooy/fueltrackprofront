@@ -37,6 +37,7 @@ const Previous = () => {
   return (
     <div className="pageSection">
       <Dropdown pumpId={pumpId} setPumpId={setPumpId} />
+      <input type="date" />
       <img src="Assets/HQ/add.png" className="addStock" onClick={openModel} />
       
       { 

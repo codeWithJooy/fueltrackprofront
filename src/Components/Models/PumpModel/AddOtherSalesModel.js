@@ -5,6 +5,7 @@ import {
   getAllProducts,
 } from "../../../actions/pumpAction/salesAction";
 import moment from "moment";
+import { getItem } from "../../../actions/setupActions";
 
 const AddOtherSalesModel = ({ setOtherSalesModel = "" }) => {
   const [data, setData] = useState({
@@ -16,7 +17,7 @@ const AddOtherSalesModel = ({ setOtherSalesModel = "" }) => {
     rate: "",
     amount: "",
   });
-
+  const [items,setItems]=useState([])
   const [productsData, setProductsData] = useState([]);
 
  const handleSelect=(e)=>{
@@ -30,7 +31,9 @@ const AddOtherSalesModel = ({ setOtherSalesModel = "" }) => {
     const calculatedAmount = (quantityNumber * rateNumber)?(quantityNumber* rateNumber):0 ;
     setData({ ...data, quantity: e.target.value, amount: calculatedAmount });
   };
-
+ const handleDate=(e)=>{
+  setData({...data,date:moment().format(e.target.value)})
+ }
   const handleRate = (e) => {
     const quantityNumber = parseFloat(data.quantity);
     const rateNumber = parseFloat(e.target.value);
@@ -54,6 +57,13 @@ const AddOtherSalesModel = ({ setOtherSalesModel = "" }) => {
     })();
   }, []);
 
+  useEffect(()=>{
+    (async()=>{
+      let dat=await getItem({pumpId:data.pumpId})
+      setItems(dat)
+    })()
+  },[data.productName,data.pumpId])
+
   return (
     <div className="modelContainer">
       <div className="modelCard">
@@ -69,15 +79,16 @@ const AddOtherSalesModel = ({ setOtherSalesModel = "" }) => {
           <div className="modelHalf">
             <label>Product</label>
             <select onChange={handleSelect}>
-              {productsData &&
-                productsData.map((data, key) => (
+              <option>Select Product</option>
+              {items &&
+                items.filter(e=>e.type!="Fuel").map((data, key) => (
                   <option value={data._id}>{data.productName}</option>
                 ))}
             </select>
           </div>
           <div className="modelHalf">
             <label>Date</label>
-            <input type="date" name="date" value={data.date} />
+            <input type="date" name="date" value={data.date} onChange={handleDate}/>
           </div>
         </div>
         <div className="modelInputContainer">

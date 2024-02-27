@@ -21,9 +21,7 @@ const ItemsHeader = ({ activeItem, setActiveItem,setShowSidebar }) => {
         <div className={`itemSelectionUnit ${activeItem=="pumpwise"?"activeItemsSelection":""}`} onClick={()=>selectItems("pumpwise")}>
           <p>Pumps</p>
         </div>
-        <div className={`itemSelectionUnit ${activeItem=="newreq"?"activeItemsSelection":""}`} onClick={()=>selectItems("newreq")}>
-          <p>New </p>
-        </div>
+        
       </div>
     </div>
   );

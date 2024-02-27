@@ -2,6 +2,7 @@ import React,{useEffect, useState} from "react";
 import "./Model.css";
 import { ItemData } from "../../Data/Items";
 import { addNozel, getTankByProduct } from "../../actions/stockAction";
+import { getItem } from "../../actions/setupActions";
 
 const AddNozelModel = ({ setNozelModel,ownerId,pumpId }) => {
   const defaultProduct = ItemData.find((e) => e.type === "Fuel");
@@ -10,12 +11,12 @@ const AddNozelModel = ({ setNozelModel,ownerId,pumpId }) => {
     ownerId,
     pumpId,
     nozelName:"",
-    product: defaultProduct ? defaultProduct.symbol : "",
+    product: "",
     mpd:"",
     tank:"",
     closingReading:"",
   })
-
+  const [items,setItems]=useState([])
   const handleChange=(e)=>{
     setData({...data,[e.target.name]:e.target.value})
   }
@@ -40,6 +41,13 @@ const AddNozelModel = ({ setNozelModel,ownerId,pumpId }) => {
 
     })()
   },[data.product])
+ 
+  useEffect(()=>{
+    (async()=>{
+      let dat=await getItem({pumpId})
+      setItems(dat)
+    })()
+  },[data.product,pumpId])
 
   return (
     <div className="modelContainer">
@@ -63,9 +71,10 @@ const AddNozelModel = ({ setNozelModel,ownerId,pumpId }) => {
             />
           </div>
           <div className="modelHalf">
-            <label>Product</label>
+          <label>Product</label>
             <select onChange={handleSelect}>
-              {ItemData.filter((e) => e.type == "Fuel").map((d) => (
+              <option>Select Product</option>
+              {items.filter(e=>e.type=="Fuel").map((d) => (
                 <option key={d.symbol} value={d.symbol}>{d.symbol}</option>
               ))}
             </select>

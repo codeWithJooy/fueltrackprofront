@@ -7,10 +7,12 @@ import {
   getPartyVehicle,
 } from "../../../actions/pumpAction/partyAction";
 import moment from "moment";
+import { getItem,getOneItemRate } from "../../../actions/setupActions";
 
 const AddPartySalesModel = ({ setPartySalesModel = "", ownerId = "" }) => {
   const [partyData, setPartyData] = useState([]);
   const [vehicle, setVehicle] = useState([]);
+  const [items,setItems]=useState([])
 
   const [data, setData] = useState({
     pumpId: localStorage.getItem("pumpId"),
@@ -34,7 +36,11 @@ const AddPartySalesModel = ({ setPartySalesModel = "", ownerId = "" }) => {
     setData({ ...data, vehicle: e.target.value });
   };
   const handleSymbol = (e) => {
-    setData({ ...data, item: e.target.value });
+    (async()=>{
+      let rat=await getOneItemRate({pumpId:data.pumpId,product:e.target.value})
+      setData({...data,item: e.target.value,rate:rat ? rat.rate:0})
+    })()
+    
   };
   const handleLedger = (e) => {
     setData({ ...data, salesLedger: e.target.value });
@@ -42,6 +48,15 @@ const AddPartySalesModel = ({ setPartySalesModel = "", ownerId = "" }) => {
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
+  const handleChangeQuantity = (e) => {
+    let rate=parseFloat(data.rate)
+    let quantity=parseFloat(e.target.value)
+    let amount=rate*quantity
+    setData({ ...data, qty: e.target.value,amount:amount });
+  };
+  const handleDate=(e)=>{
+    setData({...data,date:moment().format(e.target.value)})
+  }
   useEffect(() => {
     (async () => {
       let party = await getPartyName(data.pumpId);
@@ -59,7 +74,13 @@ const AddPartySalesModel = ({ setPartySalesModel = "", ownerId = "" }) => {
     })();
   }, [data.partyName]);
 
-  
+  useEffect(()=>{
+    (async()=>{
+      let dat=await getItem({pumpId:data.pumpId})
+      setItems(dat)
+    })()
+  },[data.item,data.pumpId])
+
   const handleSelect = (e) => {
     setData({ ...data, group: e.target.value });
   };
@@ -95,7 +116,7 @@ const AddPartySalesModel = ({ setPartySalesModel = "", ownerId = "" }) => {
           </div>
           <div className="modelHalf">
             <label>Date</label>
-            <input type="date" name="date" value={data.date} />
+            <input type="date" name="date" value={data.date} onChange={handleDate}/>
           </div>
         </div>
         <div className="modelInputContainer">
@@ -123,14 +144,14 @@ const AddPartySalesModel = ({ setPartySalesModel = "", ownerId = "" }) => {
             <label>Item</label>
             <select onChange={handleSymbol}>
               <option>Select Item</option>
-              {ItemData.map((data) => (
+              {items.map((data) => (
                 <option>{data.symbol}</option>
               ))}
             </select>
           </div>
           <div className="modelHalf">
             <label>Quantity</label>
-            <input type="text" name="qty" value={data.qty} onChange={handleChange}/>
+            <input type="text" name="qty" value={data.qty} onChange={handleChangeQuantity}/>
           </div>
         </div>
         <div className="modelInputContainer">

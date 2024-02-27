@@ -20,7 +20,7 @@ const SidebarPump=({page="LogOut",setShowSidebar})=>{
             <p>{pumpName}</p>
             <img src="Assets/HQ/close_sidebar.png" className='sidebarCross' onClick={()=>setShowSidebar(false)}/>
         </div>
-        <SidebarUnit title="CashBook" page={page} />
+        <SidebarUnit title="Cashbook" page={page} />
         <SidebarUnit title="Sales" page={page} />
         <SidebarUnit title="Party"page={page} />
         <SidebarUnit title="Purchase" page={page}/>
