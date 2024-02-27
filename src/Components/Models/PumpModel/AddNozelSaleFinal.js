@@ -11,20 +11,25 @@ const AddNozelSaleFinal = ({setNozelSalesModel}) => {
     setSelectedMpd(event.target.value);
     initializeNozzleData(event.target.value);
   };
-
+  const [sellDate,setSellDate]=useState(moment().format("YYYY-MM-DD"))
+  const handleDate=(e)=>{
+    setSellDate(moment().format(e.target.value))
+  }
   const initializeNozzleData = (selectedMpd) => {
     const nozzlesForMpd = mpdData.filter((item) => item.mpd === selectedMpd);
     const initialData = nozzlesForMpd.map((item) => ({
       pumpId:localStorage.getItem("pumpId"),
       mpd:item.mpd,
       nozelName: item.nozelName,
-      nozelId:item._id,
+      nozelId:item.nozelId,
       date:moment().format("YYYY-MM-DD"),
       openingMeter:  item.closingMeter,
+      rate:item.rate,
       closingMeter:"",
-      testing: "",
-      additionalOut: "",
-      additionalIn: "",
+      testing: "0",
+      additionalOut: "0",
+      additionalIn: "0",
+      total:"",
       netSales: "",
       salesDsr: "",
       salesDiff: "",
@@ -42,6 +47,7 @@ const AddNozelSaleFinal = ({setNozelSalesModel}) => {
     const updatedNozzleData = [...nozzleData];
     updatedNozzleData[index][fieldName] = value;
     updatedNozzleData[index].netSales = calculateNetSales(updatedNozzleData[index]);
+    updatedNozzleData[index].total=updatedNozzleData[index].netSales * updatedNozzleData[index].rate
     setNozzleData(updatedNozzleData);
   };
 
@@ -50,12 +56,12 @@ const AddNozelSaleFinal = ({setNozelSalesModel}) => {
     const netSales = (parseFloat(closingMeter) - parseFloat(openingMeter)) + parseFloat(additionalIn) - parseFloat(additionalOut) - parseFloat(testing);
     return isNaN(netSales) ? "" : netSales.toFixed(2);
   };
-  
+ 
   const handleNozel=()=>{
     
     (async()=>{
       console.log(nozzleData)
-      if(await addNozelReading(nozzleData)){
+      if(await addNozelReading(nozzleData,sellDate)){
           setNozelSalesModel(false)
       }
     })()
@@ -77,7 +83,7 @@ const AddNozelSaleFinal = ({setNozelSalesModel}) => {
 
           </div>
           <div className="selectorUnit">
-            <input type="date" value={date}/>
+            <input type="date" value={sellDate} onChange={handleDate}/>
           </div>
           <div className="selectorButton">
             <button onClick={handleNozel}>Add Nozel Sale</button>
@@ -166,12 +172,39 @@ const InputUnit = ({ index, data, onDataChange}) => {
         />
       </div>
       <div className="entryUnit">
+        <label>Rate</label>
+        <input
+          type="text"
+          name="rate"
+          value={data.rate || ""}
+          readOnly
+        />
+      </div>
+      <div className="entryUnit">
         <label>Net Sales</label>
         <input
           type="text"
           name="netSales"
           value={data.netSales || ""}
           readOnly
+        />
+      </div>
+      <div className="entryUnit">
+        <label>Total</label>
+        <input
+          type="text"
+          name="total"
+          value={data.total || ""}
+          readOnly
+        />
+      </div>
+      <div className="entryUnit">
+        <label>Sales Dsr</label>
+        <input
+          type="text"
+          name="salesDsr"
+          value={data.salesDsr || ""}
+          onChange={handleChange}
         />
       </div>
     </div>

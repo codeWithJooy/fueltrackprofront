@@ -95,7 +95,9 @@ const AddNozelSalesModel = ({ setNozelSalesModel = "" }) => {
       }
     })();
   };
-
+  const handleDate=(e)=>{
+    setData({...data,date:e.target.value})
+  }
   useEffect(() => {
     (async () => {
       let nozels = await getNozelByPumpId(data.pumpId);
@@ -137,7 +139,7 @@ const AddNozelSalesModel = ({ setNozelSalesModel = "" }) => {
           </div>
           <div className="modelHalf">
             <label>Date</label>
-            <input type="date" name="date" value={data.date} />
+            <input type="date" name="date" value={data.date} onChange={handleDate}/>
           </div>
         </div>
         <div className="modelInputContainer">

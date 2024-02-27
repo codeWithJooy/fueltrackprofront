@@ -25,7 +25,10 @@ const NozelSale = () => {
     date: moment().format("YYYY-MM-DD"),
     status:"Pending"
   });
-
+  
+   const handleDate=(e)=>{
+     setSearchData({...searchData,date:moment().format(e.target.value)})
+   }
   const handleMpd=(e)=>{
     setSearchData({...searchData,mpd:e.target.value})
   }
@@ -76,7 +79,7 @@ const NozelSale = () => {
             </select>
           </div>
           <div className="dropContainer">
-            <input type="date" value={searchData.date} />
+            <input type="date" value={searchData.date} onChange={handleDate}/>
           </div>
         </div>
       </div>

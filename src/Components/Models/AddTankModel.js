@@ -1,8 +1,8 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import { addTank } from "../../actions/stockAction";
 import "./Model.css";
 import { ItemData } from "../../Data/Items";
-
+import { getItem } from "../../actions/setupActions";
 const AddtankModel = ({ setTankModel,ownerId,pumpId }) => {
   const defaultProduct = ItemData.find((e) => e.type === "Fuel");
   const [data,setData]=useState({
@@ -12,7 +12,7 @@ const AddtankModel = ({ setTankModel,ownerId,pumpId }) => {
     product: defaultProduct ? defaultProduct.symbol : "",
     quantity:"",
   })
-
+  const [items,setItems]=useState([])
   const handleChange=(e)=>{
     setData({...data,[e.target.name]:e.target.value})
   }
@@ -26,6 +26,13 @@ const AddtankModel = ({ setTankModel,ownerId,pumpId }) => {
       }
     })()
   }
+  useEffect(()=>{
+    (async()=>{
+      let dat=await getItem({pumpId})
+      setItems(dat)
+    })()
+  },[data.product,pumpId])
+
   return (
     <div className="modelContainer">
       <div className="modelCard">
@@ -50,7 +57,8 @@ const AddtankModel = ({ setTankModel,ownerId,pumpId }) => {
           <div className="modelHalf">
             <label>Product</label>
             <select onChange={handleSelect}>
-              {ItemData.filter((e) => e.type == "Fuel").map((d) => (
+            <option>Select Product</option>
+            {items.filter(e=>e.type=="Fuel").map((d) => (
                 <option key={d.symbol} value={d.symbol}>{d.symbol}</option>
               ))}
             </select>

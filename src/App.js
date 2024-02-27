@@ -20,11 +20,12 @@ import Stock from "./Pages/Headquarters/Stock"
 import Users from './Pages/Headquarters/Users';
 import Expenditure from './Pages/Pump/Expenditure/Expenditure';
 import Purchase from './Pages/Pump/Purchase/Purchase';
+import Cashbook from './Pages/Pump/Cashbook/Cashbook';
 function App() {
   return (
      <BrowserRouter>
        <Switch>
-         <Route path="/cashbook" component={CashBook}/>
+        
          <Route path="/cash" component={Cash} />
          <Route path="/stocks" component={Stocks} />
          <Route path="/credit" component={Credit} />
@@ -35,6 +36,7 @@ function App() {
          <Route path="/purchase" component={Purchase} />
          <Route path="/rate" component={Rate} />
 
+         <Route path="/cashbook" component={Cashbook}/>
          <Route path="/login" component={Login} />
          <Route path="/signup" component={Signup} />
          <Route path="/pumpsetup" component={PumpSetup} />

@@ -121,8 +121,33 @@ export const getItemRate = async (data) => {
   try {
     let req = {
       pumpId: data.pumpId,
+      date:data.date
     };
     const response = await setupApi.post("/getItemRate", req);
+    if (response.data.code == 200) {
+      return response.data.model;
+    } else if (response.data.code == 404) {
+      updateToast({
+        code: CodeAnalogy.ERROR,
+        title: "Something Went Wrong",
+      });
+      return false;
+    }
+  } catch (error) {
+    updateToast({
+      code: CodeAnalogy.ERROR,
+      title: "Something Went Wrong",
+    });
+    console.log(error.message);
+  }
+};
+export const getOneItemRate = async (data) => {
+  try {
+    let req = {
+      pumpId: data.pumpId,
+      product:data.product,
+    };
+    const response = await setupApi.post("/getOneItemRate", req);
     if (response.data.code == 200) {
       return response.data.model;
     } else if (response.data.code == 404) {

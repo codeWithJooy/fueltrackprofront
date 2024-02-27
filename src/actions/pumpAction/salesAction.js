@@ -67,10 +67,11 @@ export const getPumpNozelClosingMeter = async (pumpId,nozelId) => {
     console.log(error);
   }
 };
-export const addNozelReading = async (data) => {
+export const addNozelReading = async (data,sellDate) => {
   try {
     let pumpData={
-      data:data
+      data:data,
+      sellDate:sellDate,
     }
     const response = await pumpSaleApi.post("/addNozelReadingFinal", pumpData);
     if (response.data.code == 200) {
