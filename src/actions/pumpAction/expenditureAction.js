@@ -124,3 +124,30 @@ export const getPumpExpenditure=async(data)=>{
         })
     }
 }
+export const getPumpExpenditureRange=async(data)=>{
+  try{
+      let pumpData={
+          pumpId:data.pumpId,
+          initialDate:data.initialDate,
+          finalDate:data.finalDate,
+      }
+      const response=await pumpExpenditureApi.post("/getPumpExpenditureRange",pumpData)
+      if(response.data.code==200){
+        return response.data.model
+      }
+      else{
+        updateToast({
+            code:CodeAnalogy.ERROR,
+            message:"Something Went Wrong",
+        })
+        return []
+      }
+  }
+  catch(error){
+      console.log(error.message)
+      updateToast({
+          code:CodeAnalogy.ERROR,
+          message:"Something Went Wrong"
+      })
+  }
+}

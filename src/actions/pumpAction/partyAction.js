@@ -122,6 +122,36 @@ export const getPartySales=async(data)=>{
     console.log(error);
   }
 }
+export const getPartySalesRange=async(data)=>{
+  try{
+    let OtherData = {
+      pumpId: data.pumpId,
+      initalDate:data.initialDate,
+      finalDate:data.finalDate,
+      partyName:data.partyName,
+      salesLedger:data.salesLedger,
+      vehicle:data.vehicle
+    };
+    const response = await pumpPartyApi.post("/getPartySalesRange", OtherData);
+    if (response.data.code == 200) {
+      return response.data.model;
+    } else {
+      updateToast({
+        code: CodeAnalogy.ERROR,
+        title: "Something Went Wrong",
+      });
+      return [];
+  }
+  }
+  catch(error){
+    updateToast({
+      code: CodeAnalogy.ERROR,
+      title: "Something Went Wrong",
+      message: error.message,
+    });
+    console.log(error);
+  }
+}
 export const getPartyVehicle = async (data) => {
   try {
     let pump = {

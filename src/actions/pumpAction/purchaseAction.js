@@ -28,7 +28,31 @@ export const getPumpPurchase=async(data)=>{
        console.log(error)
     }
 }
-
+export const getPumpPurchaseRange=async(data)=>{
+  try{
+    let pumpData={
+      pumpId:data.pumpId,
+      initialDate:data.initialDate,
+      finalDate:data.finalDate,
+      itemName:data.itemName,
+    }
+    const response=await pumpPurchaseApi.post("/getPumpPurchaseRange",pumpData)
+    if(response.data.code==200){
+      return response.data.model
+    }
+    else{
+      return false
+    }
+  }
+  catch(error){
+     updateToast({
+      code:CodeAnalogy.ERROR,
+      title:"Something Went Wrong",
+      message:"Error in user Signup"
+     })
+     console.log(error)
+  }
+}
 export const addPumpPurchase=async(data)=>{
     try{
       let pumpData={

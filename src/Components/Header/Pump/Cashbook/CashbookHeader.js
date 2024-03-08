@@ -19,7 +19,14 @@ const CashbookHeader = ({ activeItem, setActiveItem, setShowSidebar }) => {
           className="hamburger"
           onClick={openSidebar}
         />
-
+        <div
+          className={`itemSelectionUnit ${
+            activeItem == "Panna" ? "activeItemsSelection" : ""
+          }`}
+          onClick={() => selectItems("Panna")}
+        >
+          <p>Panna</p>
+        </div>
         <div
           className={`itemSelectionUnit ${
             activeItem == "Sale" ? "activeItemsSelection" : ""
