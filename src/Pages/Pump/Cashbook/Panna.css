@@ -1,0 +1,26 @@
+.pannaMain{
+    width:100%;
+    overflow: auto;
+}
+.pannaContainer{
+    width:200%;
+}
+.pannaRow{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+.pannaLeft{
+    width:55%;
+    margin-right:5%;
+}
+.pannaRight{
+    width:40%;
+}
+.pannaRight,.pannaLeft p{
+    font-weight: bold;
+    font-size: 15px;
+
+}

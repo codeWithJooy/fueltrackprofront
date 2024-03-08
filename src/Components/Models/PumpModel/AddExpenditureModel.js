@@ -19,7 +19,10 @@ const AddExpenditureModel = ({ setExpenditureModel = "" }) => {
       setType(dat)
     })()
   },[])
-
+  
+  const handleDateChange=(e)=>{
+    setData({...data,date:moment().format(e.target.value)})
+  }
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -48,7 +51,7 @@ const AddExpenditureModel = ({ setExpenditureModel = "" }) => {
         <div className="modelInputContainer">
           <div className="modelHalf">
             <label>Date</label>
-            <input type="date" name="date" value={data.date} />
+            <input type="date" name="date" value={data.date} onChange={handleDateChange}/>
           </div>
           <div className="modelHalf">
             <label>Expenditure Type</label>

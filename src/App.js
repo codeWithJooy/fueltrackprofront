@@ -35,7 +35,7 @@ function App() {
          <Route path="/expenditure" component={Expenditure} />
          <Route path="/purchase" component={Purchase} />
          <Route path="/rate" component={Rate} />
-
+         <Route path="/early" component={CashBook} />
          <Route path="/cashbook" component={Cashbook}/>
          <Route path="/login" component={Login} />
          <Route path="/signup" component={Signup} />

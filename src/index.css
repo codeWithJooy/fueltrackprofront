@@ -6,7 +6,11 @@
 }
 body {
   font-family: 'Montserrat', sans-serif;
+  color: #515151;
   height:100vh;
+}
+p{
+  color:#515151;
 }
 .main{
   width:100%;

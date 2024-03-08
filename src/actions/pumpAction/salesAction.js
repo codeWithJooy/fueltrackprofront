@@ -46,6 +46,30 @@ export const getNozelReading = async (data) => {
     console.log(error);
   }
 };
+export const getNozelReadingRange = async (data) => {
+  try {
+    let pumpData = {
+      pumpId:data.pumpId,
+      mpd:data.mpd,
+      initialDate:data.initialDate,
+      finalDate:data.finalDate,
+      status:data.status
+    };
+    const response = await pumpSaleApi.post("/getNozelReadingRange", pumpData);
+    if (response.data.code == 200) {
+      return response.data.model;
+    } else {
+      return false;
+    }
+  } catch(error) {
+    updateToast({
+      code: CodeAnalogy.ERROR,
+      title: "Something Went Wrong",
+      message: "Error in User Signup",
+    });
+    console.log(error);
+  }
+};
 export const getPumpNozelClosingMeter = async (pumpId,nozelId) => {
   try {
     let pump = {
