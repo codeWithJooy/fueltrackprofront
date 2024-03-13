@@ -126,7 +126,7 @@ export const getPartySalesRange=async(data)=>{
   try{
     let OtherData = {
       pumpId: data.pumpId,
-      initalDate:data.initialDate,
+      initialDate:data.initialDate,
       finalDate:data.finalDate,
       partyName:data.partyName,
       salesLedger:data.salesLedger,
