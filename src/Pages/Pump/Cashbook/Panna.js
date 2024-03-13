@@ -52,7 +52,7 @@ const Panna = () => {
   return (
     <div className="pannaMain">
       <div className="pannaContainer">
-        <div className="pannaContainer">
+       
           <div className="pannaDate">
             <input
               type="date"
@@ -61,7 +61,7 @@ const Panna = () => {
               onChange={changeSearch}
             />
           </div>
-        </div>
+        
         <div className="pannaRow">
           <div className="pannaLeft">
             {salesData.length > 0 && <p>Nozzle Sale</p>}
