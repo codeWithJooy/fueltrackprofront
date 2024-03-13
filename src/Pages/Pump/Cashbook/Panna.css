@@ -5,12 +5,19 @@
 .pannaContainer{
     width:200%;
 }
+.pannaDate{
+    width:200px;
+}
+.pannaDate input{
+    width:100%;
+}
 .pannaRow{
     width:100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 20px;
+    overflow: auto;
 }
 .pannaLeft{
     width:55%;
