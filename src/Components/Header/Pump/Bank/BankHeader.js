@@ -21,6 +21,22 @@ const BankHeader = ({ activeItem, setActiveItem, setShowSidebar }) => {
         />
         <div
           className={`itemSelectionUnit ${
+            activeItem == "Party Receipt" ? "activeItemsSelection" : ""
+          }`}
+          onClick={() => selectItems("Party Receipt")}
+        >
+          <p>Party Receipt</p>
+        </div>
+        <div
+          className={`itemSelectionUnit ${
+            activeItem == "Party Payment" ? "activeItemsSelection" : ""
+          }`}
+          onClick={() => selectItems("Party Payment")}
+        >
+          <p>Party Payment</p>
+        </div>
+        <div
+          className={`itemSelectionUnit ${
             activeItem == "All" ? "activeItemsSelection" : ""
           }`}
           onClick={() => selectItems("All")}

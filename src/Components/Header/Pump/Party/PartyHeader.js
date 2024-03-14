@@ -37,6 +37,22 @@ const PartyHeader = ({ activeItem, setActiveItem, setShowSidebar }) => {
         </div>
         <div
           className={`itemSelectionUnit ${
+            activeItem == "Receipts" ? "activeItemsSelection" : ""
+          }`}
+          onClick={() => selectItems("Receipts")}
+        >
+          <p>Receipts</p>
+        </div>
+        <div
+          className={`itemSelectionUnit ${
+            activeItem == "Payment" ? "activeItemsSelection" : ""
+          }`}
+          onClick={() => selectItems("Payment")}
+        >
+          <p>Payment</p>
+        </div>
+        <div
+          className={`itemSelectionUnit ${
             activeItem == "Vehicle" ? "activeItemsSelection" : ""
           }`}
           onClick={() => selectItems("Vehicle")}

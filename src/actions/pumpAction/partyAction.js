@@ -93,6 +93,124 @@ export const addPartySales = async (data) => {
     console.log(error);
   }
 };
+export const addPartyReceipt = async (data) => {
+  try {
+    let OtherData = {
+      pumpId: data.pumpId,
+      partyId: data.partyId,
+      partyName: data.partyName,
+      date:data.date,
+      amount:data.amount,
+    };
+    const response = await pumpPartyApi.post("/addPartyReceipt", OtherData);
+    if (response.data.code == 200) {
+      updateToast({
+        code: CodeAnalogy.SUCCESS,
+        title: "Payment Received from Party Successfully",
+      });
+      return true;
+    } else {
+      updateToast({
+        code: CodeAnalogy.ERROR,
+        title: "Something Went Wrong",
+      });
+      return false;
+    }
+  } catch (error) {
+    updateToast({
+      code: CodeAnalogy.ERROR,
+      title: "Something Went Wrong",
+      message: error.message,
+    });
+    console.log(error);
+  }
+};
+export const getPartyReceipt=async(data)=>{
+  try{
+    let OtherData = {
+      pumpId: data.pumpId,
+      date:data.date,
+      partyName:data.partyName,
+    };
+    const response = await pumpPartyApi.post("/getPartyReceipt", OtherData);
+    if (response.data.code == 200) {
+      return response.data.model;
+    } else {
+      updateToast({
+        code: CodeAnalogy.ERROR,
+        title: "Something Went Wrong",
+      });
+      return [];
+  }
+  }
+  catch(error){
+    updateToast({
+      code: CodeAnalogy.ERROR,
+      title: "Something Went Wrong",
+      message: error.message,
+    });
+    console.log(error);
+  }
+}
+export const addPartyPayment = async (data) => {
+  try {
+    let OtherData = {
+      pumpId: data.pumpId,
+      partyId: data.partyId,
+      partyName: data.partyName,
+      date:data.date,
+      amount:data.amount,
+    };
+    const response = await pumpPartyApi.post("/addPartyPayment", OtherData);
+    if (response.data.code == 200) {
+      updateToast({
+        code: CodeAnalogy.SUCCESS,
+        title: "Payment to Party Successful",
+      });
+      return true;
+    } else {
+      updateToast({
+        code: CodeAnalogy.ERROR,
+        title: "Something Went Wrong",
+      });
+      return false;
+    }
+  } catch (error) {
+    updateToast({
+      code: CodeAnalogy.ERROR,
+      title: "Something Went Wrong",
+      message: error.message,
+    });
+    console.log(error);
+  }
+};
+export const getPartyPayment=async(data)=>{
+  try{
+    let OtherData = {
+      pumpId: data.pumpId,
+      date:data.date,
+      partyName:data.partyName,
+    };
+    const response = await pumpPartyApi.post("/getPartyPayment", OtherData);
+    if (response.data.code == 200) {
+      return response.data.model;
+    } else {
+      updateToast({
+        code: CodeAnalogy.ERROR,
+        title: "Something Went Wrong",
+      });
+      return [];
+  }
+  }
+  catch(error){
+    updateToast({
+      code: CodeAnalogy.ERROR,
+      title: "Something Went Wrong",
+      message: error.message,
+    });
+    console.log(error);
+  }
+}
 export const getPartySales=async(data)=>{
   try{
     let OtherData = {

@@ -7,11 +7,12 @@ import PartyHeader from "../../../Components/Header/Pump/Party/PartyHeader";
 import AllPage from "./AllPage";
 import PartyDetails from "./PartyDetails";
 import Vehicle from "./Vehicle";
+import PartyReceipt from "../Bank/PartyReceipt";
+import PartyPayment from "../Bank/PartyPayment";
 
 const Party = () => {
   const [activeItem, setActiveItem] = useState("All");
   const [showSidebar, setShowSidebar] = useState(true);
-  
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,18 +36,11 @@ const Party = () => {
           setActiveItem={setActiveItem}
           setShowSidebar={setShowSidebar}
         />
-         {
-          activeItem == "All" &&
-          <AllPage />
-         }
-         {
-          activeItem == "Details" && 
-          <PartyDetails />
-         }
-         {
-          activeItem == "Vehicle" && 
-          <Vehicle />
-         }
+        {activeItem == "All" && <AllPage />}
+        {activeItem == "Details" && <PartyDetails />}
+        {activeItem == "Receipts" && <PartyReceipt />}
+        {activeItem == "Payment" && <PartyPayment />}
+        {activeItem == "Vehicle" && <Vehicle />}
       </div>
     </div>
   );

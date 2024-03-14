@@ -5,6 +5,8 @@ import "../../Headquarters/css/Common.css";
 
 import BankHeader from "../../../Components/Header/Pump/Bank/BankHeader";
 import AllBank from "./AllBank";
+import PartyReceipt from "./PartyReceipt";
+import PartyPayment from "./PartyPayment";
 
 const Bank = () => {
   const [activeItem, setActiveItem] = useState("All");
@@ -31,7 +33,15 @@ const Bank = () => {
           setActiveItem={setActiveItem}
           setShowSidebar={setShowSidebar}
         />
-        <AllBank/>
+        {
+          activeItem=="All" && <AllBank />
+        }
+       {
+        activeItem=="Party Receipt" && <PartyReceipt />
+       }
+       {
+        activeItem=="Party Payment" && <PartyPayment />
+       }
       </div>
     </div>
   );
